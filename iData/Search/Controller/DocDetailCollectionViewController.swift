@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SafariServices
 
 class DocDetailCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     static let viewControllerIdentifier = String(describing: DocDetailCollectionViewController.self)
@@ -15,6 +16,7 @@ class DocDetailCollectionViewController: UICollectionViewController, UICollectio
     
     var paperItem: PaperItem!
     var docData: DocDataClass!
+    var dUrl: DURL?
     
     let titles = [
         "title",
@@ -32,6 +34,7 @@ class DocDetailCollectionViewController: UICollectionViewController, UICollectio
         changeBackground(view: collectionView!, image: #imageLiteral(resourceName: "paper"))
         
         self.fetchDocDetail()
+        self.fetchDURL()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -69,10 +72,40 @@ class DocDetailCollectionViewController: UICollectionViewController, UICollectio
         }
     }
     
+    func fetchDURL() {
+        let parameters: Parameters =
+            [
+                "app_id": "iOSDevLog",
+                "access_token": "C3RoqraAz6nTJBhF",
+                "filename": paperItem?.filename as Any,
+                "filename_en": paperItem?.filenameEn as Any,
+                "title": paperItem?.title as Any,
+                "author": paperItem?.author as Any,
+                "tablename": paperItem?.tablename as Any
+        ]
+        Alamofire.request(kDUrl, method: .get, parameters: parameters).responseDURL { [weak self] response in
+            if let dUrl = response.result.value {
+                self?.dUrl = dUrl
+                if let isPdf = dUrl.data?.isPDF {
+                    self?.title = isPdf ? "is not Pdf" : "is Pdf"
+                }
+                self?.collectionView?.reloadData()
+            }
+        }
+    }
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return titles.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if section == titles.count - 1 {
+            return CGSize(width: collectionView.bounds.width, height: 50)
+        }
+        
+        return CGSize(width: 0, height: 0)
     }
 
     override func collectionView(_ collectionView: UICollectionView,
@@ -86,7 +119,48 @@ class DocDetailCollectionViewController: UICollectionViewController, UICollectio
             docDetailHeaderCollectionReusableView.titleLabel.text = titles[indexPath.section]
             reusableview = docDetailHeaderCollectionReusableView
         } else if kind == UICollectionElementKindSectionFooter {
+            let docDetailFooterCollectionReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                                                        withReuseIdentifier: DocDetailFooterCollectionReusableView.reuseIdentifier, for: indexPath) as! DocDetailFooterCollectionReusableView
             
+            docDetailFooterCollectionReusableView.viewOnlineButton.layer.masksToBounds = true
+            docDetailFooterCollectionReusableView.downloadButton.layer.masksToBounds = true
+            docDetailFooterCollectionReusableView.viewOnlineButton.layer.cornerRadius = 10
+            docDetailFooterCollectionReusableView.downloadButton.layer.cornerRadius = 10
+            docDetailFooterCollectionReusableView.viewOnlineButton.layer.borderWidth = 1
+            docDetailFooterCollectionReusableView.downloadButton.layer.borderWidth = 1
+            docDetailFooterCollectionReusableView.viewOnlineButton.layer.borderColor = UIColor.black.cgColor
+            docDetailFooterCollectionReusableView.downloadButton.layer.borderColor = UIColor.black.cgColor
+            
+            docDetailFooterCollectionReusableView.viewOnlineBlock = {
+                var previewURL = self.dUrl?.data?.previewURL
+                if (previewURL == nil) || previewURL!.isEmpty {
+                    previewURL = self.dUrl?.data?.url
+                }
+                
+                if let previewURL = previewURL {
+                    if let url = URL(string: previewURL) {
+                        let safariVC = SFSafariViewController.init(url: url)
+                        safariVC.delegate = self
+                        self.present(safariVC, animated: true, completion: nil)
+                    }
+                }
+            }
+            
+            docDetailFooterCollectionReusableView.downloadBlock = {
+                
+                var durl = self.dUrl?.data?.durl
+                if (durl == nil) || durl!.isEmpty {
+                    durl = self.dUrl?.data?.url
+                }
+                
+                if let durl = durl,  let url = URL(string: durl) {
+                    let safariVC = SFSafariViewController.init(url: url)
+                    safariVC.delegate = self
+                    self.present(safariVC, animated: true, completion: nil)
+                }
+            }
+            
+            reusableview = docDetailFooterCollectionReusableView
         }
         
         return reusableview
@@ -100,22 +174,22 @@ class DocDetailCollectionViewController: UICollectionViewController, UICollectio
         
         switch section {
         case 0:
-            numberOfItemsInSection = (docData?.title != nil ? 1 : 0)
+            numberOfItemsInSection = 1
             break
         case 1:
-            numberOfItemsInSection = docData.author?.count ?? 0
+            numberOfItemsInSection = docData.author?.count ?? 1
             break
         case 2:
-            numberOfItemsInSection = docData.orgniz?.count ?? 0
+            numberOfItemsInSection = docData.orgniz?.count ?? 1
             break
         case 3:
             numberOfItemsInSection = 4   // journal
             break
         case 4:
-            numberOfItemsInSection = docData.kws?.count ?? 0
+            numberOfItemsInSection = docData.kws?.count ?? 1
             break
         case 5:
-            numberOfItemsInSection = docData.fund?.count ?? 0
+            numberOfItemsInSection = docData.fund?.count ?? 1
             break
         case 6:
             numberOfItemsInSection = 1 // abstract
@@ -128,7 +202,7 @@ class DocDetailCollectionViewController: UICollectionViewController, UICollectio
     }
 
     fileprivate func title(_ indexPath: IndexPath) -> String? {
-        var titleString: String? = nil
+        var titleString: String? = "None"
         
         switch indexPath.section {
         case 0:
@@ -173,6 +247,10 @@ class DocDetailCollectionViewController: UICollectionViewController, UICollectio
             break
         }
         
+        if titleString == nil {
+            titleString = "None"
+        }
+        
         return titleString
     }
     
@@ -187,4 +265,12 @@ class DocDetailCollectionViewController: UICollectionViewController, UICollectio
         return cell
     }
 
+}
+
+extension DocDetailCollectionViewController: SFSafariViewControllerDelegate {
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        controller.dismiss(animated: true) {
+        }
+    }
 }

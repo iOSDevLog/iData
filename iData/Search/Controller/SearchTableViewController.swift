@@ -42,6 +42,7 @@ class SearchTableViewController: UITableViewController {
         cell.orgnizLabel.attributedText =  html2AttributedString(string: paperItem.orgniz)
         cell.abstractLabel.attributedText = html2AttributedString(string: paperItem.abstract)
 
+        
         return cell
     }
     
