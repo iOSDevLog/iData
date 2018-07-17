@@ -30,17 +30,17 @@ class SearchTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
 
         // Configure the cell...
         let paperItem = searchResults[indexPath.row]
-        cell.titleLabel.attributedText = html2AttributedString(string: paperItem.title!)
-        cell.authorLabel.attributedText = html2AttributedString(string: paperItem.author!)
-        cell.publishTimeLabel.attributedText = html2AttributedString(string: paperItem.publishTime!)
-        cell.dataBaseLabel.attributedText =  html2AttributedString(string: paperItem.database!)
-        cell.sourceLabel.attributedText =  html2AttributedString(string: paperItem.source!)
-        cell.orgnizLabel.attributedText =  html2AttributedString(string: paperItem.orgniz!)
-        cell.abstractLabel.attributedText = html2AttributedString(string: paperItem.abstract!)
+        cell.titleLabel.attributedText = html2AttributedString(string: paperItem.title)
+        cell.authorLabel.attributedText = html2AttributedString(string: paperItem.author)
+        cell.publishTimeLabel.attributedText = html2AttributedString(string: paperItem.publishTime)
+        cell.dataBaseLabel.attributedText =  html2AttributedString(string: paperItem.database)
+        cell.sourceLabel.attributedText =  html2AttributedString(string: paperItem.source)
+        cell.orgnizLabel.attributedText =  html2AttributedString(string: paperItem.orgniz)
+        cell.abstractLabel.attributedText = html2AttributedString(string: paperItem.abstract)
 
         return cell
     }
@@ -53,23 +53,20 @@ class SearchTableViewController: UITableViewController {
         return nil
     }
     
-    func html2AttributedString(string: String) -> NSAttributedString {
-        return try! NSAttributedString(
-            data: string.data(using: .unicode, allowLossyConversion: true)!,
-            options:[.documentType: NSAttributedString.DocumentType.html,
-                     .characterEncoding: String.Encoding.utf8.rawValue],
-            documentAttributes: nil)
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let sender = searchResults[indexPath.row]
+        self.performSegue(withIdentifier: DocDetailViewController.viewControllerSegue, sender: sender)
     }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == DocDetailViewController.viewControllerSegue {
+            let vc = segue.destination as! DocDetailViewController
+            vc.paperItem = sender as! PaperItem
+        }
     }
 }

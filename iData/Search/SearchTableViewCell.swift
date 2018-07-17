@@ -9,6 +9,7 @@
 import UIKit
 
 class SearchTableViewCell: UITableViewCell {
+    static let identifier = String(describing: SearchTableViewCell.self)
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!

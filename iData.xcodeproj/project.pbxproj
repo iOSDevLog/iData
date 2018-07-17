@@ -24,6 +24,7 @@
 		DE8F717C20FDBFD700D3C0D4 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE8F717B20FDBFD700D3C0D4 /* Search.storyboard */; };
 		DE8F717F20FDC01100D3C0D4 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F717E20FDC01100D3C0D4 /* SearchTableViewController.swift */; };
 		DE8F718120FDC41000D3C0D4 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F718020FDC41000D3C0D4 /* SearchTableViewCell.swift */; };
+		DEC2B6F320FDE34500852135 /* DocDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC2B6F220FDE34500852135 /* DocDetailViewController.swift */; };
 		FDF2CDC047FC06CD1DC78699 /* Pods_iDataTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34353ACBDAA39B153D8F797F /* Pods_iDataTests.framework */; };
 		FF4521D4BBDC05ADD227757A /* Pods_iDataUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79B776D39CA23B952E86D96E /* Pods_iDataUITests.framework */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,7 @@
 		DE8F717B20FDBFD700D3C0D4 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		DE8F717E20FDC01100D3C0D4 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		DE8F718020FDC41000D3C0D4 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		DEC2B6F220FDE34500852135 /* DocDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocDetailViewController.swift; sourceTree = "<group>"; };
 		E67D27BACEC38F191FE55BA0 /* Pods-iDataUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDataUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iDataUITests/Pods-iDataUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,6 +193,7 @@
 			children = (
 				DE8F717E20FDC01100D3C0D4 /* SearchTableViewController.swift */,
 				DE8F718020FDC41000D3C0D4 /* SearchTableViewCell.swift */,
+				DEC2B6F220FDE34500852135 /* DocDetailViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				DE8F717620FDB88600D3C0D4 /* DocDetail.swift in Sources */,
 				DE8F717820FDB88600D3C0D4 /* DUrl.swift in Sources */,
 				DE8F714220FDA5AD00D3C0D4 /* MasterViewController.swift in Sources */,
+				DEC2B6F320FDE34500852135 /* DocDetailViewController.swift in Sources */,
 				DE8F717520FDB88600D3C0D4 /* Paper.swift in Sources */,
 				DE8F714020FDA5AD00D3C0D4 /* AppDelegate.swift in Sources */,
 				DE8F717F20FDC01100D3C0D4 /* SearchTableViewController.swift in Sources */,

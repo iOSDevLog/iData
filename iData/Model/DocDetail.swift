@@ -35,10 +35,10 @@ public struct DocDataClass: Codable {
     public let abstract: String?
     public let author: [Author]?
     public let dbcode, dbname, filename, filenameEn: String?
-    public let fund: [Author]?
+    public let fund: [Fund]?
     public let journal: Journal?
     public let kws: [String]?
-    public let orgniz: [Author]?
+    public let orgniz: [Argniz]?
     public let pageCount, tablename, title, ztcls: String?
     
     enum CodingKeys: String, CodingKey {
@@ -49,7 +49,7 @@ public struct DocDataClass: Codable {
         case tablename, title, ztcls
     }
     
-    public init(abstract: String?, author: [Author]?, dbcode: String?, dbname: String?, filename: String?, filenameEn: String?, fund: [Author]?, journal: Journal?, kws: [String]?, orgniz: [Author]?, pageCount: String?, tablename: String?, title: String?, ztcls: String?) {
+    public init(abstract: String?, author: [Author]?, dbcode: String?, dbname: String?, filename: String?, filenameEn: String?, fund: [Fund]?, journal: Journal?, kws: [String]?, orgniz: [Argniz]?, pageCount: String?, tablename: String?, title: String?, ztcls: String?) {
         self.abstract = abstract
         self.author = author
         self.dbcode = dbcode
@@ -67,7 +67,7 @@ public struct DocDataClass: Codable {
     }
 }
 
-public struct Author: Codable {
+public struct Dict: Codable {
     public let code, name: String?
     
     public init(code: String?, name: String?) {
@@ -75,6 +75,10 @@ public struct Author: Codable {
         self.name = name
     }
 }
+
+public typealias Author = Dict
+public typealias Fund = Dict
+public typealias Argniz = Dict
 
 public struct Journal: Codable {
     public let code, issn: String?
