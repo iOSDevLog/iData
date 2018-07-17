@@ -1,0 +1,6 @@
+framework module Pods_iDataUITests {
+  umbrella header "Pods-iDataUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
