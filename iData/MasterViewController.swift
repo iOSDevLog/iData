@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Alamofire
 
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var objects = [Any]()
+    var searchResults = [PaperItem]()
+    let paper: Paper? = nil
 
+    var searchController: UISearchController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +29,26 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+        
+        // Setup the Search Controller
+        let searchStoryboard = UIStoryboard.init(name: "Search", bundle: nil)
+        let searchResultsController = searchStoryboard.instantiateViewController(withIdentifier: "SearchTableViewController")
+        searchController = UISearchController(searchResultsController: searchResultsController)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Papers"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+        // Setup the Scope Bar
+        searchController.searchBar.scopeButtonTitles = ["SCDB", "CJFQ", "CDMD", "CIPD", "CCND"]
+        searchController.searchBar.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @objc
@@ -90,6 +104,60 @@ class MasterViewController: UITableViewController {
         }
     }
 
-
+    // MARK: - Private instance methods
+    
+    func searchPapers(_ searchText: String, scope: String = "SCDB") {
+        let parameters: Parameters =
+            [
+                "app_id": "iOSDevLog",
+                "access_token": "C3RoqraAz6nTJBhF",
+                "keyword": searchText,
+                "sort_type": "1",
+                "db": scope,
+                "start": "0",
+                "advance": "0",
+                ]
+        Alamofire.request(kSearchUrl, method: .get, parameters: parameters).responsePaper { [weak self] response in
+            if let paper = response.result.value, let items = paper.data?.items {
+                print(paper)
+                self?.searchResults = items
+                if !(self!.searchBarIsEmpty()) {
+//                    let navController = self!.searchController.searchResultsController as! UINavigationController
+//
+//                    let vc = navController.topViewController as! SearchTableViewController
+                    let vc = self?.searchController.searchResultsController as! SearchTableViewController
+                    vc.searchResults = self!.searchResults
+                    vc.totalCount = paper.data?.totalCount
+                    vc.tableView.reloadData()
+                }
+            } else {
+                print(response.error.debugDescription)
+            }
+        }
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func isFiltering() -> Bool {
+        let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
+        return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+    }
 }
 
+extension MasterViewController: UISearchBarDelegate {
+    // MARK: - UISearchBar Delegate
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        searchPapers(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+    }
+}
+
+extension MasterViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        searchPapers(searchController.searchBar.text!, scope: scope)
+    }
+}

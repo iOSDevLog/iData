@@ -32,7 +32,7 @@ public struct Paper: Codable {
 }
 
 public struct PaperDataClass: Codable {
-    public let items: [Item]?
+    public let items: [PaperItem]?
     public let start: String?
     public let totalCount: Int?
     
@@ -41,14 +41,14 @@ public struct PaperDataClass: Codable {
         case totalCount = "total_count"
     }
     
-    public init(items: [Item]?, start: String?, totalCount: Int?) {
+    public init(items: [PaperItem]?, start: String?, totalCount: Int?) {
         self.items = items
         self.start = start
         self.totalCount = totalCount
     }
 }
 
-public struct Item: Codable {
+public struct PaperItem: Codable {
     public let abstract, author, database, dbcode: String?
     public let downURL, filename, filenameEn, mirrorURL: String?
     public let orgniz, publishTime, source, tablename: String?
