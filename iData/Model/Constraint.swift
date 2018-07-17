@@ -6,7 +6,7 @@
 //  Copyright © 2018年 iOSDevLog. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 let kSeguePrefix = "Segue"
 let kBaseUrl = "https://api.cn-ki.net/openapi/"
@@ -23,4 +23,13 @@ func html2AttributedString(string: String?) -> NSAttributedString {
         options:[.documentType: NSAttributedString.DocumentType.html,
                  .characterEncoding: String.Encoding.utf8.rawValue],
         documentAttributes: nil)
+}
+
+func changeBackground(view: UIView, image: UIImage) {
+    UIGraphicsBeginImageContext(view.bounds.size)
+    image.draw(in: view.bounds)
+    let newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    view.backgroundColor = UIColor(patternImage: newImage!)
 }

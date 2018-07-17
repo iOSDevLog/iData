@@ -29,9 +29,7 @@ class DocDetailCollectionViewController: UICollectionViewController, UICollectio
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
-//        layout.estimatedItemSize = CGSize(width: 240, height: 50)
-//        layout.itemSize = UICollectionViewFlowLayoutAutomaticSize
+        changeBackground(view: collectionView!, image: #imageLiteral(resourceName: "paper"))
         
         self.fetchDocDetail()
     }
@@ -48,9 +46,9 @@ class DocDetailCollectionViewController: UICollectionViewController, UICollectio
         
         let padding: CGFloat = 10.0
         
-        let boundingRect = attributedString.boundingRect(with: CGSize(width: collectionView.bounds.width - 2*padding, height: 0), options: options, context: nil)
+        let boundingRect = attributedString.boundingRect(with: CGSize(width: collectionView.bounds.width - 3*padding, height: 0), options: options, context: nil)
         
-        return boundingRect.size
+        return CGSize(width: boundingRect.size.width + padding, height: boundingRect.size.height + padding)
     }
 
     func fetchDocDetail() {
@@ -183,6 +181,8 @@ class DocDetailCollectionViewController: UICollectionViewController, UICollectio
         let titleString = title(indexPath)
         
         cell.titleLabel.attributedText =  html2AttributedString(string: titleString)
+        cell.layer.cornerRadius = 3
+        cell.layer.masksToBounds = true
     
         return cell
     }

@@ -16,7 +16,6 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="MMQ-nN-bTc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.91473040803108807" green="0.84406537743029186" blue="0.71615851157564159" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="70J-6v-l5O" customClass="UICollectionViewLeftAlignedLayout">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
@@ -32,20 +31,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zM-Vd-FKP">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <color key="backgroundColor" red="0.49711380830026791" green="0.88894511010362698" blue="0.73462136871203987" alpha="0.42014194542253519" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <rect key="frame" x="4" y="5" width="41" height="41"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" red="0.49711380830000002" green="0.88894511009999999" blue="0.73462136870000005" alpha="0.42014194539999999" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.91473040800000005" green="0.84406537739999998" blue="0.71615851159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="0zM-Vd-FKP" firstAttribute="top" secondItem="Oc2-U7-IEw" secondAttribute="top" id="1QQ-eM-25j"/>
-                                    <constraint firstAttribute="bottom" secondItem="0zM-Vd-FKP" secondAttribute="bottom" id="PEc-6f-AzM"/>
-                                    <constraint firstItem="0zM-Vd-FKP" firstAttribute="leading" secondItem="Oc2-U7-IEw" secondAttribute="leading" id="SaW-Ra-5K2"/>
-                                    <constraint firstAttribute="trailing" secondItem="0zM-Vd-FKP" secondAttribute="trailing" id="cMq-Nn-5ak"/>
+                                    <constraint firstItem="0zM-Vd-FKP" firstAttribute="top" secondItem="Oc2-U7-IEw" secondAttribute="top" constant="5" id="1QQ-eM-25j"/>
+                                    <constraint firstAttribute="bottom" secondItem="0zM-Vd-FKP" secondAttribute="bottom" constant="4" id="PEc-6f-AzM"/>
+                                    <constraint firstItem="0zM-Vd-FKP" firstAttribute="leading" secondItem="Oc2-U7-IEw" secondAttribute="leading" constant="4" id="SaW-Ra-5K2"/>
+                                    <constraint firstAttribute="trailing" secondItem="0zM-Vd-FKP" secondAttribute="trailing" constant="5" id="cMq-Nn-5ak"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="titleLabel" destination="0zM-Vd-FKP" id="ewa-Dd-IyS"/>
@@ -57,12 +55,13 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ek8-vs-0DH">
-                                    <rect key="frame" x="8" y="8" width="41.666666666666664" height="34"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <rect key="frame" x="8" y="8" width="75.666666666666671" height="24"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <color key="backgroundColor" red="0.83998542743005178" green="0.78820089251042424" blue="0.0081427330122076872" alpha="0.90762544014084512" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ek8-vs-0DH" secondAttribute="trailing" id="Kpa-RC-Fp6"/>
                                 <constraint firstItem="ek8-vs-0DH" firstAttribute="top" secondItem="zmI-sm-Sq6" secondAttribute="topMargin" id="d93-iw-CoI"/>
