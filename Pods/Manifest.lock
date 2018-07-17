@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (4.7.2)
+  - UICollectionViewLeftAlignedLayout (1.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - UICollectionViewLeftAlignedLayout
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
+    - UICollectionViewLeftAlignedLayout
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  UICollectionViewLeftAlignedLayout: 830bf6fa5bab9f9b464f62e3384f9d2e00b3c0f6
 
-PODFILE CHECKSUM: f8016f266b1e36b2e4b176418b85c2a36258a64f
+PODFILE CHECKSUM: dfd7417a24a1c7d94bd4d711d1981c8e49ee2d59
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

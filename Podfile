@@ -7,6 +7,7 @@ target 'iData' do
 
   # Pods for iData
   pod 'Alamofire', '~> 4.7'
+  pod 'UICollectionViewLeftAlignedLayout'
 
   target 'iDataTests' do
     inherit! :search_paths

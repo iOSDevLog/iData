@@ -56,17 +56,11 @@ class SearchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let sender = searchResults[indexPath.row]
-        self.performSegue(withIdentifier: DocDetailViewController.viewControllerSegue, sender: sender)
-    }
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == DocDetailViewController.viewControllerSegue {
-            let vc = segue.destination as! DocDetailViewController
-            vc.paperItem = sender as! PaperItem
-        }
+        let paperItem = searchResults[indexPath.row]
+        let searchStoryBoard = UIStoryboard.init(name: "Search", bundle: nil)
+        let docDetailCollectionViewController = searchStoryBoard.instantiateViewController(withIdentifier: DocDetailCollectionViewController.viewControllerIdentifier) as! DocDetailCollectionViewController
+        docDetailCollectionViewController.paperItem = paperItem
+        
+        self.presentingViewController?.navigationController?.show(docDetailCollectionViewController, sender: nil)
     }
 }
