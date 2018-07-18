@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SafariServices
+import DownloadButton
 
 class DocDetailCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     static let viewControllerIdentifier = String(describing: DocDetailCollectionViewController.self)
@@ -28,11 +29,12 @@ class DocDetailCollectionViewController: UICollectionViewController, UICollectio
         "abstract",
     ]
     
+    weak var downloadButton: PKDownloadButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.fetchDocDetail()
-        self.fetchDURL()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -85,10 +87,36 @@ class DocDetailCollectionViewController: UICollectionViewController, UICollectio
             if let dUrl = response.result.value {
                 self?.dUrl = dUrl
                 if let isPdf = dUrl.data?.isPDF {
+                    self?.downloadButton.state = .downloading;
+                    self?.startDownload(url: (dUrl.data?.durl)!)
                     self?.title = isPdf ? "is Pdf" : "is not Pdf"
                 }
-                self?.collectionView?.reloadData()
+//                self?.collectionView?.reloadData()
             }
+        }
+    }
+    
+    func startDownload(url: String) {
+        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
+            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let fileName = (url as NSString).lastPathComponent
+            let fileURL = documentsURL.appendingPathComponent(fileName)
+            
+            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+        }
+        Alamofire.download(url, to: destination)
+            .downloadProgress { [weak self] progress in
+                print("Download Progress: \(progress.fractionCompleted)")
+                
+                self?.downloadButton.stopDownloadButton.progress = CGFloat(progress.fractionCompleted)
+                if (progress.fractionCompleted == 1.0) {
+                    self?.downloadButton.state = PKDownloadButtonState.downloaded;
+                }
+            }
+            .responseData { response in
+                if let data = response.result.value {
+                    
+                }
         }
     }
     
@@ -121,13 +149,13 @@ class DocDetailCollectionViewController: UICollectionViewController, UICollectio
                                                                                                         withReuseIdentifier: DocDetailFooterCollectionReusableView.reuseIdentifier, for: indexPath) as! DocDetailFooterCollectionReusableView
             
             docDetailFooterCollectionReusableView.viewOnlineButton.layer.masksToBounds = true
-            docDetailFooterCollectionReusableView.downloadButton.layer.masksToBounds = true
             docDetailFooterCollectionReusableView.viewOnlineButton.layer.cornerRadius = 10
-            docDetailFooterCollectionReusableView.downloadButton.layer.cornerRadius = 10
             docDetailFooterCollectionReusableView.viewOnlineButton.layer.borderWidth = 1
-            docDetailFooterCollectionReusableView.downloadButton.layer.borderWidth = 1
             docDetailFooterCollectionReusableView.viewOnlineButton.layer.borderColor = UIColor.black.cgColor
-            docDetailFooterCollectionReusableView.downloadButton.layer.borderColor = UIColor.black.cgColor
+            
+            self.downloadButton = docDetailFooterCollectionReusableView.downloadButton
+            self.downloadButton.delegate = self
+            self.downloadButton.downloadedButton.titleLabel?.text = "Open"
             
             docDetailFooterCollectionReusableView.viewOnlineBlock = {
                 var previewURL = self.dUrl?.data?.previewURL
@@ -269,6 +297,26 @@ extension DocDetailCollectionViewController: SFSafariViewControllerDelegate {
     
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         controller.dismiss(animated: true) {
+        }
+    }
+}
+
+extension DocDetailCollectionViewController: PKDownloadButtonDelegate {
+    func downloadButtonTapped(_ downloadButton: PKDownloadButton!, currentState state: PKDownloadButtonState) {
+        switch state {
+        case PKDownloadButtonState.startDownload:
+            self.downloadButton.state = PKDownloadButtonState.pending;
+            self.fetchDURL()
+            break;
+        case PKDownloadButtonState.pending:
+            self.downloadButton.state = PKDownloadButtonState.startDownload;
+            break;
+        case PKDownloadButtonState.downloading:
+            self.downloadButton.state = PKDownloadButtonState.startDownload;
+            break;
+        case PKDownloadButtonState.downloaded:
+            self.downloadButton.state = PKDownloadButtonState.startDownload;
+            break;
         }
     }
 }

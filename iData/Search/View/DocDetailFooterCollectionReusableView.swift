@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DownloadButton
 
 class DocDetailFooterCollectionReusableView: UICollectionReusableView {
     
@@ -16,13 +17,9 @@ class DocDetailFooterCollectionReusableView: UICollectionReusableView {
     var downloadBlock: (() -> ())?
 
     @IBOutlet weak var viewOnlineButton: UIButton!
-    @IBOutlet weak var downloadButton: UIButton!
+    @IBOutlet weak var downloadButton: PKDownloadButton!
     
     @IBAction func viewOnline(_ sender: Any) {
         viewOnlineBlock?()
-    }
-    
-    @IBAction func download(_ sender: Any) {
-        downloadBlock?()
     }
 }

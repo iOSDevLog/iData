@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (4.7.2)
+  - DownloadButton (0.1.0)
   - UICollectionViewLeftAlignedLayout (1.0.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - DownloadButton
   - UICollectionViewLeftAlignedLayout
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - DownloadButton
     - UICollectionViewLeftAlignedLayout
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  DownloadButton: 49a21a89e0d7d1b42d9134f79aaa40e727cd57c3
   UICollectionViewLeftAlignedLayout: 830bf6fa5bab9f9b464f62e3384f9d2e00b3c0f6
 
-PODFILE CHECKSUM: 4dc3bcc374b6d980586d48fed5d3a1cd7fd15384
+PODFILE CHECKSUM: 42896fe4b1d5a31608f862de828b1451b9f9f4c3
 
 COCOAPODS: 1.5.0

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -87,13 +88,10 @@
                                                 <action selector="viewOnline:" destination="nR8-bv-OfJ" eventType="touchUpInside" id="p8O-lg-DUa"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gby-Sd-Esk">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="syJ-kQ-fC8" customClass="PKDownloadButton">
                                             <rect key="frame" x="184.66666666666663" y="0.0" width="174.33333333333337" height="34"/>
-                                            <state key="normal" title="download"/>
-                                            <connections>
-                                                <action selector="download:" destination="nR8-bv-OfJ" eventType="touchUpInside" id="HDV-cG-k6I"/>
-                                            </connections>
-                                        </button>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
                                     </subviews>
                                 </stackView>
                             </subviews>
@@ -104,7 +102,7 @@
                                 <constraint firstAttribute="bottomMargin" secondItem="MuS-Kc-1BS" secondAttribute="bottom" id="y39-vP-yG9"/>
                             </constraints>
                             <connections>
-                                <outlet property="downloadButton" destination="Gby-Sd-Esk" id="Lbr-12-72K"/>
+                                <outlet property="downloadButton" destination="syJ-kQ-fC8" id="Syk-bh-PUp"/>
                                 <outlet property="viewOnlineButton" destination="RoS-ht-oBg" id="yFC-Q0-Bal"/>
                             </connections>
                         </collectionReusableView>
