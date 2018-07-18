@@ -36,9 +36,18 @@ class MasterViewController: UITableViewController {
         let searchResultsController = searchStoryboard.instantiateViewController(withIdentifier: "SearchTableViewController")
         searchController = UISearchController(searchResultsController: searchResultsController)
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
+        if #available(iOS 9.1, *) {
+            searchController.obscuresBackgroundDuringPresentation = false
+        } else {
+            // Fallback on earlier versions
+        }
         searchController.searchBar.placeholder = "Search Papers"
-        navigationItem.searchController = searchController
+        if #available(iOS 11.0, *) {
+            navigationItem.searchController = searchController
+        } else {
+            // Fallback on earlier versions
+            tableView.tableHeaderView = searchController.searchBar
+        }
         definesPresentationContext = true
         
         // Setup the Scope Bar

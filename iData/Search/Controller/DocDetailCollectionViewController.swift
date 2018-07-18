@@ -31,8 +31,6 @@ class DocDetailCollectionViewController: UICollectionViewController, UICollectio
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        changeBackground(view: collectionView!, image: #imageLiteral(resourceName: "paper"))
-        
         self.fetchDocDetail()
         self.fetchDURL()
     }
@@ -77,17 +75,17 @@ class DocDetailCollectionViewController: UICollectionViewController, UICollectio
             [
                 "app_id": "iOSDevLog",
                 "access_token": "C3RoqraAz6nTJBhF",
-                "filename": paperItem?.filename as Any,
-                "filename_en": paperItem?.filenameEn as Any,
-                "title": paperItem?.title as Any,
-                "author": paperItem?.author as Any,
-                "tablename": paperItem?.tablename as Any
+                "filename": paperItem!.filename!,
+                "filename_en": paperItem!.filenameEn!,
+                "title": paperItem!.title!,
+                "author": paperItem!.author!,
+                "tablename": paperItem!.tablename!
         ]
         Alamofire.request(kDUrl, method: .get, parameters: parameters).responseDURL { [weak self] response in
             if let dUrl = response.result.value {
                 self?.dUrl = dUrl
                 if let isPdf = dUrl.data?.isPDF {
-                    self?.title = isPdf ? "is not Pdf" : "is Pdf"
+                    self?.title = isPdf ? "is Pdf" : "is not Pdf"
                 }
                 self?.collectionView?.reloadData()
             }
