@@ -63,6 +63,6 @@ class SearchTableViewController: UITableViewController {
         let docDetailCollectionViewController = searchStoryBoard.instantiateViewController(withIdentifier: DocDetailCollectionViewController.viewControllerIdentifier) as! DocDetailCollectionViewController
         docDetailCollectionViewController.paperItem = paperItem
         
-        self.presentingViewController?.navigationController?.show(docDetailCollectionViewController, sender: nil)
+        self.presentingViewController?.navigationController?.showDetailViewController(docDetailCollectionViewController, sender: nil)
     }
 }

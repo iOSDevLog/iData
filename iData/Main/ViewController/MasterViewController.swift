@@ -55,11 +55,23 @@ class MasterViewController: UITableViewController {
         searchController.searchBar.delegate = self
         
         self.tableView.tableFooterView = UIView()
+        
+        if #available(iOS 11.0, *) {
+            self.navigationItem.hidesSearchBarWhenScrolling = false
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if #available(iOS 11.0, *) {
+            self.navigationItem.hidesSearchBarWhenScrolling = true
+        }
     }
 
     @objc
