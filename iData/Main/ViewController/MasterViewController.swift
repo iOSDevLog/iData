@@ -17,6 +17,7 @@ class MasterViewController: UITableViewController {
     let paper: Paper? = nil
 
     var searchController: UISearchController!
+    private let downloadQueue = DispatchQueue(label: "com.iosdevlog.iData.Search")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,6 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
-        
         
         // Setup the Search Controller
         let searchStoryboard = UIStoryboard.init(name: "Search", bundle: nil)
@@ -53,6 +53,8 @@ class MasterViewController: UITableViewController {
         // Setup the Scope Bar
         searchController.searchBar.scopeButtonTitles = ["SCDB", "CJFQ", "CDMD", "CIPD", "CCND"]
         searchController.searchBar.delegate = self
+        
+        self.tableView.tableFooterView = UIView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -126,21 +128,23 @@ class MasterViewController: UITableViewController {
                 "start": "0",
                 "advance": "0",
                 ]
-        Alamofire.request(kSearchUrl, method: .get, parameters: parameters).responsePaper { [weak self] response in
-            if let paper = response.result.value, let items = paper.data?.items {
-                print(paper)
-                self?.searchResults = items
-                if !(self!.searchBarIsEmpty()) {
-//                    let navController = self!.searchController.searchResultsController as! UINavigationController
-//
-//                    let vc = navController.topViewController as! SearchTableViewController
-                    let vc = self?.searchController.searchResultsController as! SearchTableViewController
-                    vc.searchResults = self!.searchResults
-                    vc.totalCount = paper.data?.totalCount
-                    vc.tableView.reloadData()
+        
+        downloadQueue.async {
+            Alamofire.request(kSearchUrl, method: .get, parameters: parameters).responsePaper { [weak self] response in
+                if let paper = response.result.value, let items = paper.data?.items {
+                    print(paper)
+                    self?.searchResults = items
+                    if !(self!.searchBarIsEmpty()) {
+                        let vc = self?.searchController.searchResultsController as! SearchTableViewController
+                        vc.searchResults = self!.searchResults
+                        vc.totalCount = paper.data?.totalCount
+                        DispatchQueue.main.async {
+                            vc.tableView.reloadData()
+                        }
+                    }
+                } else {
+                    print(response.error.debugDescription)
                 }
-            } else {
-                print(response.error.debugDescription)
             }
         }
     }
