@@ -8,7 +8,9 @@ target 'iData' do
   # Pods for iData
   pod 'Alamofire', '~> 4.7'
   pod 'UICollectionViewLeftAlignedLayout'
-  pod "DownloadButton"
+  pod 'DownloadButton'
+  pod 'MBProgressHUD'
+  pod 'vfrReader', '~> 2.8.6'
 
   target 'iDataTests' do
     inherit! :search_paths
