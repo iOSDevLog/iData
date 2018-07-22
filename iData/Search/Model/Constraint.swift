@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 let kSeguePrefix = "Segue"
 let kBaseUrl = "https://api.cn-ki.net/openapi/"
@@ -32,4 +33,13 @@ func changeBackground(view: UIView, image: UIImage) {
     UIGraphicsEndImageContext();
     
     view.backgroundColor = UIColor(patternImage: newImage!)
+}
+
+func showLoadingHUD(contentView: UIView) {
+    let hud = MBProgressHUD.showAdded(to: contentView, animated: true)
+    hud.label.text = "Loading..."
+}
+
+func hideLoadingHUD(contentView: UIView) {
+    MBProgressHUD.hide(for: contentView, animated: true)
 }

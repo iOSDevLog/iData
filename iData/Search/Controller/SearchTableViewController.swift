@@ -7,11 +7,17 @@
 //
 
 import UIKit
+import QuickLook
+import SafariServices
+import DownloadButton
+import Alamofire
 
 class SearchTableViewController: UITableViewController {
     var searchResults = [PaperItem]()
     var totalCount: Int? = nil
-
+    var paperItem: PaperItem!
+    internal var dUrl: DURL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +48,6 @@ class SearchTableViewController: UITableViewController {
         cell.sourceLabel.attributedText =  html2AttributedString(string: paperItem.source)
         cell.orgnizLabel.attributedText =  html2AttributedString(string: paperItem.orgniz)
         cell.abstractLabel.attributedText = html2AttributedString(string: paperItem.abstract)
-
         
         return cell
     }
@@ -60,9 +65,9 @@ class SearchTableViewController: UITableViewController {
         
         let paperItem = searchResults[indexPath.row]
         let searchStoryBoard = UIStoryboard.init(name: "Search", bundle: nil)
-        let docDetailCollectionViewController = searchStoryBoard.instantiateViewController(withIdentifier: DocDetailCollectionViewController.viewControllerIdentifier) as! DocDetailCollectionViewController
-        docDetailCollectionViewController.paperItem = paperItem
+        let docDetailViewController = searchStoryBoard.instantiateViewController(withIdentifier: DocDetailViewController.viewControllerIdentifier) as! DocDetailViewController
+        docDetailViewController.paperItem = paperItem
         
-        self.presentingViewController?.navigationController?.showDetailViewController(docDetailCollectionViewController, sender: nil)
+        self.presentingViewController?.navigationController?.showDetailViewController(docDetailViewController, sender: nil)
     }
 }

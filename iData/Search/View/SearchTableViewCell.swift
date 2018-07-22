@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DownloadButton
 
 class SearchTableViewCell: UITableViewCell {
     static let identifier = String(describing: SearchTableViewCell.self)
@@ -20,10 +21,10 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var orgnizLabel: UILabel!
     @IBOutlet weak var abstractLabel: UILabel!
-
+    
     fileprivate func rander(view: UIView) {
         view.layer.masksToBounds = true
-        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderColor = UIColor.black.cgColor
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 5
     }

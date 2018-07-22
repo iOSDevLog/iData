@@ -123,9 +123,9 @@ static PKDownloadButton *CommonInit(PKDownloadButton *self) {
 
 - (UIButton *)createDownloadedButton {
     UIButton *downloadedButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    NSAttributedString *title = [[NSAttributedString alloc] initWithString:@"REMOVE" attributes:DefaultTitleAttributes()];
+    NSAttributedString *title = [[NSAttributedString alloc] initWithString:@"Open" attributes:DefaultTitleAttributes()];
     [downloadedButton setAttributedTitle:title forState:UIControlStateNormal];
-    NSAttributedString *highlitedTitle = [[NSAttributedString alloc] initWithString:@"REMOVE" attributes:HighlitedTitleAttributes()];
+    NSAttributedString *highlitedTitle = [[NSAttributedString alloc] initWithString:@"Open" attributes:HighlitedTitleAttributes()];
     [downloadedButton setAttributedTitle:highlitedTitle forState:UIControlStateHighlighted];
     [downloadedButton configureDefaultAppearance];
     
