@@ -8,20 +8,25 @@
 
 import UIKit
 import Alamofire
+import QuickLook
 
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var objects = [Any]()
     var searchResults = [PaperItem]()
     let paper: Paper? = nil
 
     var searchController: UISearchController!
-    private let downloadQueue = DispatchQueue(label: "com.iosdevlog.iData.Search")
+    
+    var contents = [URL]()
+    var currentContent: URL!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         navigationItem.leftBarButtonItem = editButtonItem
 
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
@@ -59,10 +64,18 @@ class MasterViewController: UITableViewController {
         if #available(iOS 11.0, *) {
             self.navigationItem.hidesSearchBarWhenScrolling = false
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(documentDirectoryDidChange(_:)), name: .documentDirectoryDidChange, object: nil)
+        
+        refreshData()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
+        refreshData()
         super.viewWillAppear(animated)
     }
     
@@ -76,7 +89,7 @@ class MasterViewController: UITableViewController {
 
     @objc
     func insertNewObject(_ sender: Any) {
-        objects.insert(NSDate(), at: 0)
+//        contents.insert(, at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
@@ -86,9 +99,9 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
+                currentContent = contents[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
+//                controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
@@ -102,14 +115,14 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return contents.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        let content = contents[indexPath.row]
+        cell.textLabel!.text = content.lastPathComponent
         return cell
     }
 
@@ -120,18 +133,31 @@ class MasterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
+            contents.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        currentContent = contents[indexPath.row]
+        
+        let controller =  QLPreviewController.init()
+        controller.dataSource = self
+        controller.delegate = self
+        controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+        controller.navigationItem.leftItemsSupplementBackButton = true
+        let navigationController = UINavigationController(rootViewController: controller)
+        self.showDetailViewController(navigationController, sender: nil)
+    }
 
     // MARK: - Private instance methods
     
     func searchPapers(_ searchText: String, scope: String = "SCDB") {
-        let parameters: Parameters =
-            [
+        let parameters: Parameters = [
                 "app_id": "iOSDevLog",
                 "access_token": "C3RoqraAz6nTJBhF",
                 "keyword": searchText,
@@ -141,22 +167,18 @@ class MasterViewController: UITableViewController {
                 "advance": "0",
                 ]
         
-        downloadQueue.async {
-            Alamofire.request(kSearchUrl, method: .get, parameters: parameters).responsePaper { [weak self] response in
-                if let paper = response.result.value, let items = paper.data?.items {
-                    print(paper)
-                    self?.searchResults = items
-                    if !(self!.searchBarIsEmpty()) {
-                        let vc = self?.searchController.searchResultsController as! SearchTableViewController
-                        vc.searchResults = self!.searchResults
-                        vc.totalCount = paper.data?.totalCount
-                        DispatchQueue.main.async {
-                            vc.tableView.reloadData()
-                        }
-                    }
-                } else {
-                    print(response.error.debugDescription)
+        Alamofire.request(kSearchUrl, method: .get, parameters: parameters).responsePaper { [weak self] response in
+            if let paper = response.result.value, let items = paper.data?.items {
+                print(paper)
+                self?.searchResults = items
+                if !(self!.searchBarIsEmpty()) {
+                    let vc = self?.searchController.searchResultsController as! SearchTableViewController
+                    vc.searchResults = self!.searchResults
+                    vc.totalCount = paper.data?.totalCount
+                    vc.tableView.reloadData()
                 }
+            } else {
+                print(response.error.debugDescription)
             }
         }
     }
@@ -168,6 +190,18 @@ class MasterViewController: UITableViewController {
     func isFiltering() -> Bool {
         let searchBarScopeIsFiltering = searchController.searchBar.selectedScopeButtonIndex != 0
         return searchController.isActive && (!searchBarIsEmpty() || searchBarScopeIsFiltering)
+    }
+    
+    private func refreshData() {
+        let fileManager = FileManager.default
+        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        contents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+        
+        tableView.reloadData()
+    }
+    
+    @objc func documentDirectoryDidChange(_ notification: Notification) {
+        refreshData()
     }
 }
 
@@ -184,5 +218,15 @@ extension MasterViewController: UISearchResultsUpdating {
         let searchBar = searchController.searchBar
         let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
         searchPapers(searchController.searchBar.text!, scope: scope)
+    }
+}
+
+extension MasterViewController: QLPreviewControllerDataSource, QLPreviewControllerDelegate {
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return 1
+    }
+    
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        return currentContent as QLPreviewItem
     }
 }

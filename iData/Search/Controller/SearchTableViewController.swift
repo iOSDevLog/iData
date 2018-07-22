@@ -70,4 +70,14 @@ class SearchTableViewController: UITableViewController {
         
         self.presentingViewController?.navigationController?.showDetailViewController(docDetailViewController, sender: nil)
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if tableView.contentOffset.y + (tableView.frame.size.height)
+            > tableView.contentSize.height {
+            loadNext()
+        }
+    }
+    
+    func loadNext() {
+    }
 }

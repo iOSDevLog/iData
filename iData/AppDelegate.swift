@@ -8,6 +8,10 @@
 
 import UIKit
 
+extension Notification.Name {
+    public static let documentDirectoryDidChange = Notification.Name("documentDirectoryDidChange")
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
@@ -57,5 +61,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return false
     }
 
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        let fileManager = FileManager.default
+        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let destination = documentDirectory.appendingPathComponent(url.lastPathComponent)
+        if !fileManager.fileExists(atPath: destination.path) {
+            try? fileManager.copyItem(at: url, to: destination)
+            NotificationCenter.default.post(name: .documentDirectoryDidChange, object: nil)
+        }
+        return true
+    }
 }
 
