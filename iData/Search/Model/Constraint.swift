@@ -43,3 +43,22 @@ func showLoadingHUD(contentView: UIView) {
 func hideLoadingHUD(contentView: UIView) {
     MBProgressHUD.hide(for: contentView, animated: true)
 }
+
+extension DispatchTime: ExpressibleByIntegerLiteral {
+    public init(integerLiteral value: Int) {
+        self = DispatchTime.now() + .seconds(value)
+    }
+}
+extension DispatchTime: ExpressibleByFloatLiteral {
+    public init(floatLiteral value: Double) {
+        self = DispatchTime.now() + .milliseconds(Int(value * 1000))
+    }
+}
+
+func toast(contentView: UIView, message: String) {
+    let hud = MBProgressHUD.showAdded(to: contentView, animated: true)
+    hud.label.text = message
+    DispatchQueue.main.asyncAfter(deadline: 2) {
+        MBProgressHUD.hide(for: contentView, animated: true)
+    }
+}

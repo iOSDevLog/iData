@@ -66,8 +66,7 @@ class DocDetailViewController: UIViewController {
     }
     
     func fetchDocDetail() {
-        let parameters: Parameters =
-            [
+        let parameters: Parameters = [
                 "app_id": "iOSDevLog",
                 "access_token": "C3RoqraAz6nTJBhF",
                 "filename": paperItem!.filename!,
@@ -81,13 +80,13 @@ class DocDetailViewController: UIViewController {
                 strongSelf.docData = docDetailData
                 strongSelf.collectionView?.reloadData()
             } else {
+                toast(contentView: strongSelf.view, message: "NetworkError")
                 print(response.error.debugDescription)
             }
         }
     }
-
     
-    fileprivate func title(_ indexPath: IndexPath) -> String? {
+    fileprivate func setionTitle(_ indexPath: IndexPath) -> String? {
         var titleString: String? = "None"
         
         switch indexPath.section {
@@ -95,10 +94,14 @@ class DocDetailViewController: UIViewController {
             titleString = docData.title
             break
         case 1:
-            titleString = docData.author?[indexPath.item].name
+            if let author = docData.author, author.count > indexPath.item  {
+                titleString = author[indexPath.item].name
+            }
             break
         case 2:
-            titleString = docData.orgniz?[indexPath.item].name
+            if let orgniz = docData.orgniz, orgniz.count > indexPath.item  {
+                titleString = orgniz[indexPath.item].name
+            }
             break
         case 3:
             if let journal = docData.journal {
@@ -121,10 +124,14 @@ class DocDetailViewController: UIViewController {
             }
             break
         case 4:
-            titleString = docData.kws?[indexPath.item]
+            if let kwd = docData.kws, kwd.count > indexPath.item {
+                titleString = kwd[indexPath.item]
+            }
             break
         case 5:
-            titleString = docData.fund?[indexPath.item].name
+            if let fund = docData.fund, fund.count > indexPath.item  {
+                titleString = fund[indexPath.item].name
+            }
             break
         case 6:
             titleString = docData.abstract
@@ -141,8 +148,7 @@ class DocDetailViewController: UIViewController {
     }
     
     func fetchDURL(downloadedButton: PKDownloadButton, shouldDownload: Bool) {
-        let parameters: Parameters =
-            [
+        let parameters: Parameters = [
                 "app_id": "iOSDevLog",
                 "access_token": "C3RoqraAz6nTJBhF",
                 "filename": paperItem!.filename!,
@@ -202,13 +208,13 @@ class DocDetailViewController: UIViewController {
             let strongSelf = self
             return (strongSelf!.fileURL(), [.removePreviousFile, .createIntermediateDirectories])
         }
-        showLoadingHUD(contentView: self.view)
+        
         Alamofire.download(url, to: destination)
             .downloadProgress { progress in
                 print("Download Progress: \(progress.fractionCompleted)")
                 downloadedButton.stopDownloadButton.progress = CGFloat(progress.fractionCompleted)
                 if (progress.fractionCompleted == 1.0) {
-                    downloadedButton.state = PKDownloadButtonState.downloaded;
+                    downloadedButton.state = .downloaded;
                 }
             }
             .responseData { [weak self]  response in
@@ -216,6 +222,9 @@ class DocDetailViewController: UIViewController {
                 hideLoadingHUD(contentView: strongSelf.view)
                 if response.result.value != nil {
                     strongSelf.showPdf()
+                } else {
+                    downloadedButton.state = .startDownload
+                    toast(contentView: strongSelf.view, message: "DownloadError")
                 }
         }
     }
@@ -239,25 +248,29 @@ extension DocDetailViewController: UICollectionViewDataSource, UICollectionViewD
             numberOfItemsInSection = 1
             break
         case 1:
-            numberOfItemsInSection = docData.author?.count ?? 1
+            numberOfItemsInSection = docData.author?.count ?? 0
             break
         case 2:
-            numberOfItemsInSection = docData.orgniz?.count ?? 1
+            numberOfItemsInSection = docData.orgniz?.count ?? 0
             break
         case 3:
             numberOfItemsInSection = 4   // journal
             break
         case 4:
-            numberOfItemsInSection = docData.kws?.count ?? 1
+            numberOfItemsInSection = docData.kws?.count ?? 0
             break
         case 5:
-            numberOfItemsInSection = docData.fund?.count ?? 1
+            numberOfItemsInSection = docData.fund?.count ?? 0
             break
         case 6:
             numberOfItemsInSection = 1 // abstract
             break
         default:
             break
+        }
+        
+        if numberOfItemsInSection == 0 {
+            numberOfItemsInSection = 1
         }
         
         return numberOfItemsInSection
@@ -282,7 +295,7 @@ extension DocDetailViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DocDetailCollectionViewCell.reuseIdentifier, for: indexPath) as! DocDetailCollectionViewCell
-        let titleString = title(indexPath)
+        let titleString = setionTitle(indexPath)
         
         cell.titleLabel.attributedText =  html2AttributedString(string: titleString)
         cell.layer.cornerRadius = 3
@@ -290,9 +303,12 @@ extension DocDetailViewController: UICollectionViewDataSource, UICollectionViewD
         
         return cell
     }
-    
+
+}
+
+extension DocDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let titleString = title(indexPath)
+        let titleString = setionTitle(indexPath)
         let attributedString = html2AttributedString(string: titleString)
         
         guard titleString != nil else {
@@ -301,17 +317,12 @@ extension DocDetailViewController: UICollectionViewDataSource, UICollectionViewD
         
         let options: NSStringDrawingOptions = [.usesLineFragmentOrigin, .usesFontLeading]
         
-        let padding: CGFloat = 10.0
+        let padding: CGFloat = 5
         
         let boundingRect = attributedString.boundingRect(with: CGSize(width: collectionView.bounds.width - 2*padding, height: 0), options: options, context: nil)
         
-        return CGSize(width: boundingRect.size.width + padding, height: boundingRect.size.height + padding)
+        return CGSize(width: boundingRect.size.width + 2*padding, height: boundingRect.size.height + 2*padding)
     }
-
-}
-
-extension DocDetailViewController: UICollectionViewDelegateFlowLayout {
-    
 }
 
 extension DocDetailViewController: SFSafariViewControllerDelegate {
@@ -325,21 +336,21 @@ extension DocDetailViewController: SFSafariViewControllerDelegate {
 extension DocDetailViewController: PKDownloadButtonDelegate {
     func downloadButtonTapped(_ downloadButton: PKDownloadButton!, currentState state: PKDownloadButtonState) {
         switch state {
-        case PKDownloadButtonState.startDownload:
-            downloadButton.state = PKDownloadButtonState.pending
+        case .startDownload:
+            downloadButton.state = .pending
             var shouldDownload = false
             if downloadButton == self.downloadButton {
                 shouldDownload = true
             }
             self.fetchDURL(downloadedButton: downloadButton, shouldDownload: shouldDownload)
             break;
-        case PKDownloadButtonState.pending:
-            downloadButton.state = PKDownloadButtonState.startDownload;
+        case .pending:
+            downloadButton.state = .startDownload;
             break;
-        case PKDownloadButtonState.downloading:
-            downloadButton.state = PKDownloadButtonState.startDownload;
+        case .downloading:
+            downloadButton.state = .startDownload;
             break;
-        case PKDownloadButtonState.downloaded:
+        case .downloaded:
             if downloadButton == self.downloadButton {
                 showPdf()
             } else {
