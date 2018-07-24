@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 extension Notification.Name {
     public static let documentDirectoryDidChange = Notification.Name("documentDirectoryDidChange")
@@ -24,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         splitViewController.delegate = self
+        
+        let manager = Alamofire.SessionManager.default
+        manager.session.configuration.timeoutIntervalForRequest = 20
+        
         return true
     }
 

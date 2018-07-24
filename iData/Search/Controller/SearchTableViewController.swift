@@ -99,15 +99,21 @@ class SearchTableViewController: UITableViewController {
     // MARK: - Private instance methods
     
     func searchPapers(_ searchText: String, scope: String = "SCDB", start: String? = nil) {
+        guard searchText.count > 0 else {
+            return
+        }
+        
         let parameters: Parameters = [
-            "app_id": "iOSDevLog",
-            "access_token": "C3RoqraAz6nTJBhF",
+            "app_id": app_id,
+            "access_token": access_token,
             "keyword": searchText,
             "sort_type": "1",
             "db": scope,
             "start": start ?? "0",
             "advance": "0",
             ]
+        
+        cancelRequest()
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Alamofire.request(kSearchUrl, method: .get, parameters: parameters).responsePaper { [weak self] response in
@@ -116,20 +122,33 @@ class SearchTableViewController: UITableViewController {
             strongSelf.loadMoreStatus = false
             strongSelf.tableView.tableFooterView?.isHidden = true
             
-            if let paper = response.result.value, let items = paper.data?.items {
-                strongSelf.paper = paper
-                if start == "0" {
-                    strongSelf.searchResults = items
+            switch response.result {
+            case.failure(let error):
+                let error = error as NSError
+                let isCancelled  = error.userInfo["NSLocalizedDescription"].debugDescription.contains("cancelled")
+                
+                if !isCancelled {
+                    toast(contentView: strongSelf.view, message: "NetworkError")
+                    print(response.error.debugDescription)
+                }
+                break
+            case .success(let paper):
+                if let items = paper.data?.items {
+                    strongSelf.paper = paper
+                    if start == "0" {
+                        strongSelf.searchResults = items
+                    } else {
+                        strongSelf.searchResults.append(contentsOf: items)
+                    }
+                    if !(strongSelf.searchBarIsEmpty()) {
+                        strongSelf.tableView.reloadData()
+                    }
+                    print("paper = \(paper)" )
                 } else {
-                    strongSelf.searchResults.append(contentsOf: items)
+                    toast(contentView: strongSelf.view, message: "NetworkError")
+                    print(response.error.debugDescription)
                 }
-                if !(strongSelf.searchBarIsEmpty()) {
-                    strongSelf.tableView.reloadData()
-                }
-                print("paper = \(paper)" )
-            } else {
-                toast(contentView: strongSelf.tableView, message: "NetworkError")
-                print(response.error.debugDescription)
+                break
             }
         }
     }
@@ -147,7 +166,11 @@ class SearchTableViewController: UITableViewController {
 extension SearchTableViewController: UISearchBarDelegate {
     // MARK: - UISearchBar Delegate
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        searchPapers(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+        searchPapers(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope], start: "0")
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchPapers(searchBar.text!, scope: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex], start: "0")
     }
 }
 
@@ -156,7 +179,7 @@ extension SearchTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
-        searchPapers(searchController.searchBar.text!, scope: scope)
+        searchPapers(searchController.searchBar.text!, scope: scope, start: "0")
     }
 }
 

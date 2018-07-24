@@ -8,12 +8,16 @@
 
 import UIKit
 import MBProgressHUD
+import Alamofire
 
 let kSeguePrefix = "Segue"
 let kBaseUrl = "https://api.cn-ki.net/openapi/"
 let kSearchUrl = kBaseUrl + "search"
 let kDocDetailUrl = kBaseUrl + "doc_detail"
 let kDUrl = kBaseUrl + "get_durl"
+
+let app_id = "iOSDevLog"
+let access_token = "C3RoqraAz6nTJBhF"
 
 func html2AttributedString(string: String?) -> NSAttributedString {
     if string == nil {
@@ -58,7 +62,16 @@ extension DispatchTime: ExpressibleByFloatLiteral {
 func toast(contentView: UIView, message: String) {
     let hud = MBProgressHUD.showAdded(to: contentView, animated: true)
     hud.label.text = message
+    hud.mode = .text
     DispatchQueue.main.asyncAfter(deadline: 2) {
         MBProgressHUD.hide(for: contentView, animated: true)
+    }
+}
+
+func cancelRequest() {
+    Alamofire.SessionManager.default.session.getTasksWithCompletionHandler { (sessionDataTask, uploadData, downloadData) in
+        sessionDataTask.forEach { $0.cancel() }
+        uploadData.forEach { $0.cancel() }
+        downloadData.forEach { $0.cancel() }
     }
 }

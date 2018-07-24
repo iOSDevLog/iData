@@ -67,23 +67,42 @@ class DocDetailViewController: UIViewController {
     
     func fetchDocDetail() {
         let parameters: Parameters = [
-                "app_id": "iOSDevLog",
-                "access_token": "C3RoqraAz6nTJBhF",
+                "app_id": app_id,
+                "access_token": access_token,
                 "filename": paperItem!.filename!,
                 "dbcode": paperItem!.dbcode!
         ]
-        showLoadingHUD(contentView: collectionView)
+        
+        cancelRequest()
+        
+        showLoadingHUD(contentView: view)
         Alamofire.request(kDocDetailUrl, method: .get, parameters: parameters).responseDocDetail { [weak self] response in
             guard let strongSelf = self else { return }
-            hideLoadingHUD(contentView: strongSelf.collectionView)
-            if let docDetail = response.result.value, let docDetailData = docDetail.data {
-                strongSelf.docData = docDetailData
-                strongSelf.collectionView?.reloadData()
-            } else {
-                toast(contentView: strongSelf.view, message: "NetworkError")
-                print(response.error.debugDescription)
+            hideLoadingHUD(contentView: strongSelf.view)
+            
+            switch response.result {
+            case.failure(let error):
+                let error = error as NSError
+                let isCancelled  = error.userInfo["NSLocalizedDescription"].debugDescription.contains("cancelled")
+                
+                if !isCancelled {
+                    toast(contentView: strongSelf.view, message: "NetworkError")
+                    print(response.error.debugDescription)
+                }
+                break
+            case .success(let docDetail):
+                if let docDetailData = docDetail.data {
+                    strongSelf.docData = docDetailData
+                    strongSelf.collectionView?.reloadData()
+                } else {
+                    toast(contentView: strongSelf.view, message: "NetworkError")
+                    print(response.error.debugDescription)
+                }
+                break
             }
         }
+        
+        
     }
     
     fileprivate func setionTitle(_ indexPath: IndexPath) -> String? {
@@ -149,8 +168,8 @@ class DocDetailViewController: UIViewController {
     
     func fetchDURL(downloadedButton: PKDownloadButton, shouldDownload: Bool) {
         let parameters: Parameters = [
-                "app_id": "iOSDevLog",
-                "access_token": "C3RoqraAz6nTJBhF",
+                "app_id": app_id,
+                "access_token": access_token,
                 "filename": paperItem!.filename!,
                 "filename_en": paperItem!.filenameEn!,
                 "title": paperItem!.title!,
@@ -209,6 +228,8 @@ class DocDetailViewController: UIViewController {
             return (strongSelf!.fileURL(), [.removePreviousFile, .createIntermediateDirectories])
         }
         
+        cancelRequest()
+        
         Alamofire.download(url, to: destination)
             .downloadProgress { progress in
                 print("Download Progress: \(progress.fractionCompleted)")
@@ -219,12 +240,20 @@ class DocDetailViewController: UIViewController {
             }
             .responseData { [weak self]  response in
                 guard let strongSelf = self else { return }
-                hideLoadingHUD(contentView: strongSelf.view)
-                if response.result.value != nil {
+                
+                switch response.result {
+                case.failure(let error):
+                    let error = error as NSError
+                    let isCancelled  = error.userInfo["NSLocalizedDescription"].debugDescription.contains("cancelled")
+                    
+                    if !isCancelled {
+                        downloadedButton.state = .startDownload
+                        toast(contentView: strongSelf.view, message: "DownloadError")
+                    }
+                    break
+                case .success:
                     strongSelf.showPdf()
-                } else {
-                    downloadedButton.state = .startDownload
-                    toast(contentView: strongSelf.view, message: "DownloadError")
+                    break
                 }
         }
     }
