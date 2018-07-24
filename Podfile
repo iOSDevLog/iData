@@ -11,6 +11,7 @@ target 'iData' do
   pod 'DownloadButton'
   pod 'MBProgressHUD'
   pod 'vfrReader', '~> 2.8.6'
+  pod 'DZNEmptyDataSet'
 
   target 'iDataTests' do
     inherit! :search_paths

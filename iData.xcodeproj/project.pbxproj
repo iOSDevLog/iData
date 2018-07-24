@@ -64,14 +64,14 @@
 		9FF25BB37C2BD1186D7554EC /* Pods-iDataTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDataTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iDataTests/Pods-iDataTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A3D9C004CA3259899D3F443A /* Pods_iData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE01FDA12107490E00268546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Search.storyboard; sourceTree = "<group>"; };
-		DE01FDA42107491800268546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DE01FDA42107491800268546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Search.storyboard; sourceTree = "<group>"; };
 		DE01FDAA2107496100268546 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		DE01FDAE2107497E00268546 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		DE01FDAE2107497E00268546 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ../en.lproj/Main.strings; sourceTree = "<group>"; };
 		DE01FDB02107690000268546 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DE01FDB32107690000268546 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DE01FDB62107690000268546 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DE01FDB92107690000268546 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Localizable.strings; sourceTree = "<group>"; };
-		DE01FDBD2107690000268546 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Main.strings; sourceTree = "<group>"; };
+		DE01FDBD2107690000268546 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = ../zh.lproj/Main.strings; sourceTree = "<group>"; };
 		DE01FDC2210769EB00268546 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/Search.strings; sourceTree = "<group>"; };
 		DE01FDC321076A0500268546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DE01FDC521076A4F00268546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 		DE8F713C20FDA5AD00D3C0D4 /* iData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE8F713F20FDA5AD00D3C0D4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE8F714120FDA5AD00D3C0D4 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		DE8F714620FDA5AD00D3C0D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DE8F714620FDA5AD00D3C0D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE8F714820FDA5AD00D3C0D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE8F714D20FDA5AD00D3C0D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE8F715220FDA5AD00D3C0D4 /* iDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -577,7 +577,7 @@
 				DE01FDC72107731300268546 /* en */,
 			);
 			name = Search.storyboard;
-			path = Base.lproj;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		DE01FDA52107491800268546 /* LaunchScreen.storyboard */ = {
