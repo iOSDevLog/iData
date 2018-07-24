@@ -8,6 +8,7 @@
 
 import UIKit
 import QuickLook
+import DZNEmptyDataSet
 
 class MasterViewController: UITableViewController {
 
@@ -20,6 +21,9 @@ class MasterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
         
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -118,9 +122,9 @@ class MasterViewController: UITableViewController {
             
             if fileManager.fileExists(atPath: content.path) {
                 try? fileManager.removeItem(at: content)
-                NotificationCenter.default.post(name: .documentDirectoryDidChange, object: nil)
                 contents.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                NotificationCenter.default.post(name: .documentDirectoryDidChange, object: nil)
             }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
@@ -161,5 +165,29 @@ extension MasterViewController: QLPreviewControllerDataSource, QLPreviewControll
     
     func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
         return currentContent as QLPreviewItem
+    }
+}
+
+extension MasterViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return #imageLiteral(resourceName: "paper")
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let titleForEmpty = NSLocalizedString("titleForEmpty", comment: "titleForEmpty")
+        return NSAttributedString.init(string: titleForEmpty)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let descriptionForEmpty = NSLocalizedString("descriptionForEmpty", comment: "descriptionForEmpty")
+        return NSAttributedString.init(string: descriptionForEmpty)
+    }
+    
+    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
+        return -60
+    }
+    
+    func spaceHeight(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
+        return 30
     }
 }

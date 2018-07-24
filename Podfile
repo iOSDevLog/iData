@@ -10,7 +10,6 @@ target 'iData' do
   pod 'UICollectionViewLeftAlignedLayout'
   pod 'DownloadButton'
   pod 'MBProgressHUD'
-  pod 'vfrReader', '~> 2.8.6'
   pod 'DZNEmptyDataSet'
 
   target 'iDataTests' do

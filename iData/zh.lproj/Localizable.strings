@@ -19,6 +19,9 @@
 /* CJFQ */
 "CJFQ" = "期刊";
 
+/* descriptionForEmpty */
+"descriptionForEmpty" = "点击上面的搜索框去探索知识吧";
+
 /* Download */
 "Download" = "下载";
 
@@ -95,7 +98,10 @@
 "journal" = "期刊";
 
 /* kws */
-"kws" = "关键字";
+"kws" = "关键词";
+
+/* Loading... */
+"Loading..." = "加载中...";
 
 /* LoadMoreData */
 "LoadMoreData" = "加载中...";
@@ -119,10 +125,13 @@
 "Open iTunes" = "打开 iTunes";
 
 /* orgniz */
-"orgniz" = "机构";
+"orgniz" = "单位";
 
 /* Preview */
 "Preview" = "预览";
+
+/* publishTime */
+"publishTime" = "发表时间";
 
 /* SCDB */
 "SCDB" = "综合";
@@ -135,6 +144,9 @@
 
 /* title */
 "title" = "标题";
+
+/* titleForEmpty */
+"titleForEmpty" = "没有下载记录";
 
 /* Total Count: */
 "Total Count: " = "总数：";

@@ -41,7 +41,7 @@ func changeBackground(view: UIView, image: UIImage) {
 
 func showLoadingHUD(contentView: UIView) {
     let hud = MBProgressHUD.showAdded(to: contentView, animated: true)
-    hud.label.text = "Loading..."
+    hud.label.text = NSLocalizedString("Loading...", comment: "Loading...")
 }
 
 func hideLoadingHUD(contentView: UIView) {

@@ -13,6 +13,7 @@ import DownloadButton
 import Alamofire
 
 class SearchTableViewController: UITableViewController {
+    let scopes = ["SCDB", "CJFQ", "CDMD", "CIPD", "CCND"]
     var paper: Paper?
     var searchResults = [PaperItem]()
     var paperItem: PaperItem!
@@ -92,14 +93,13 @@ class SearchTableViewController: UITableViewController {
             self.loadMoreStatus = true
 //            self.tableView.tableFooterView?.isHidden = false
             let searchBar = searchController.searchBar
-            let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
-            searchPapers(searchController.searchBar.text!, scope: scope, start: paper?.data?.start)
+            searchPapers(searchController.searchBar.text!, index: searchBar.selectedScopeButtonIndex, start: paper?.data?.start)
         }
     }
     
     // MARK: - Private instance methods
     
-    func searchPapers(_ searchText: String, scope: String = "SCDB", start: String? = nil) {
+    func searchPapers(_ searchText: String, index: Int, start: String? = nil) {
         guard searchText.count > 0 else {
             return
         }
@@ -109,7 +109,7 @@ class SearchTableViewController: UITableViewController {
             "access_token": access_token,
             "keyword": searchText,
             "sort_type": "1",
-            "db": scope,
+            "db": scopes[index],
             "start": start ?? "0",
             "advance": "0",
             ]
@@ -154,6 +154,7 @@ class SearchTableViewController: UITableViewController {
                     
                     if start == "0" {
                         strongSelf.searchResults = items
+                        strongSelf.tableView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
                     } else {
                         strongSelf.searchResults.append(contentsOf: items)
                     }
@@ -183,11 +184,11 @@ class SearchTableViewController: UITableViewController {
 extension SearchTableViewController: UISearchBarDelegate {
     // MARK: - UISearchBar Delegate
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        searchPapers(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope], start: "0")
+        searchPapers(searchBar.text!, index: selectedScope, start: "0")
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchPapers(searchBar.text!, scope: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex], start: "0")
+        searchPapers(searchBar.text!, index: searchBar.selectedScopeButtonIndex, start: "0")
     }
 }
 
@@ -195,8 +196,7 @@ extension SearchTableViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
-        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
-        searchPapers(searchController.searchBar.text!, scope: scope, start: "0")
+        searchPapers(searchController.searchBar.text!, index: searchBar.selectedScopeButtonIndex, start: "0")
     }
 }
 

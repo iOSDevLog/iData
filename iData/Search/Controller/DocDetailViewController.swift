@@ -24,8 +24,9 @@ class DocDetailViewController: UIViewController {
     let titles = [
         NSLocalizedString("title", comment: "title"),
         NSLocalizedString("author", comment: "author"),
-        NSLocalizedString("journal", comment: "journal"),
         NSLocalizedString("orgniz", comment: "orgniz"),
+        NSLocalizedString("journal", comment: "journal"),
+        NSLocalizedString("publishTime", comment: "publishTime"),
         NSLocalizedString("kws", comment: "kws"),
         NSLocalizedString("fund", comment: "fund"),
         NSLocalizedString("abstract", comment: "abstract"),
@@ -134,25 +135,27 @@ class DocDetailViewController: UIViewController {
                 case 2:
                     titleString = journal.otherinfo
                     break
-                case 3:
-                    titleString = journal.issue?.name
-                    break
                 default:
                     break
                 }
             }
             break
         case 4:
+            if let journal = docData.journal, let publishTime = journal.issue?.name {
+                titleString = publishTime
+            }
+            break
+        case 5:
             if let kwd = docData.kws, kwd.count > indexPath.item {
                 titleString = kwd[indexPath.item]
             }
             break
-        case 5:
+        case 6:
             if let fund = docData.fund, fund.count > indexPath.item  {
                 titleString = fund[indexPath.item].name
             }
             break
-        case 6:
+        case 7:
             titleString = docData.abstract
             break
         default:
@@ -296,15 +299,18 @@ extension DocDetailViewController: UICollectionViewDataSource, UICollectionViewD
             numberOfItemsInSection = docData.orgniz?.count ?? 0
             break
         case 3:
-            numberOfItemsInSection = 4   // journal
+            numberOfItemsInSection = 3   // journal
             break
         case 4:
-            numberOfItemsInSection = docData.kws?.count ?? 0
+            numberOfItemsInSection = 1 // publish time
             break
         case 5:
-            numberOfItemsInSection = docData.fund?.count ?? 0
+            numberOfItemsInSection = docData.kws?.count ?? 0
             break
         case 6:
+            numberOfItemsInSection = docData.fund?.count ?? 0
+            break
+        case 7:
             numberOfItemsInSection = 1 // abstract
             break
         default:

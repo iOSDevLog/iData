@@ -19,6 +19,9 @@
 /* CJFQ */
 "CJFQ" = "CJFQ";
 
+/* descriptionForEmpty */
+"descriptionForEmpty" = "Click on the search box above to explore knowledge.";
+
 /* Download */
 "Download" = "Download";
 
@@ -97,6 +100,9 @@
 /* kws */
 "kws" = "keywords";
 
+/* Loading... */
+"Loading..." = "Loading...";
+
 /* LoadMoreData */
 "LoadMoreData" = "Loading...";
 
@@ -124,6 +130,9 @@
 /* Preview */
 "Preview" = "Preview";
 
+/* publishTime */
+"publishTime" = "publish Time";
+
 /* SCDB */
 "SCDB" = "SCDB";
 
@@ -135,6 +144,9 @@
 
 /* title */
 "title" = "title";
+
+/* titleForEmpty */
+"titleForEmpty" = "You haven't downloaded a paper yet";
 
 /* Total Count: */
 "Total Count: " = "Total Count: ";
