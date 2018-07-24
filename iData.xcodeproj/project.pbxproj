@@ -13,7 +13,6 @@
 		DE4D43A420FE1718006AC0C8 /* DocDetailHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4D43A320FE1718006AC0C8 /* DocDetailHeaderCollectionReusableView.swift */; };
 		DE8F714020FDA5AD00D3C0D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F713F20FDA5AD00D3C0D4 /* AppDelegate.swift */; };
 		DE8F714220FDA5AD00D3C0D4 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F714120FDA5AD00D3C0D4 /* MasterViewController.swift */; };
-		DE8F714420FDA5AD00D3C0D4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F714320FDA5AD00D3C0D4 /* DetailViewController.swift */; };
 		DE8F714720FDA5AD00D3C0D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE8F714520FDA5AD00D3C0D4 /* Main.storyboard */; };
 		DE8F714920FDA5AD00D3C0D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE8F714820FDA5AD00D3C0D4 /* Assets.xcassets */; };
 		DE8F715720FDA5AE00D3C0D4 /* iDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F715620FDA5AE00D3C0D4 /* iDataTests.swift */; };
@@ -26,6 +25,8 @@
 		DE8F717C20FDBFD700D3C0D4 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE8F717B20FDBFD700D3C0D4 /* Search.storyboard */; };
 		DE8F717F20FDC01100D3C0D4 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F717E20FDC01100D3C0D4 /* SearchTableViewController.swift */; };
 		DE8F718120FDC41000D3C0D4 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F718020FDC41000D3C0D4 /* SearchTableViewCell.swift */; };
+		DE9329B72106FA7A005D41C9 /* HelpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9329B62106FA7A005D41C9 /* HelpItem.swift */; };
+		DE9329B9210707C7005D41C9 /* AboutlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9329B8210707C7005D41C9 /* AboutlViewController.swift */; };
 		DEB15F9921047C740007558E /* DocDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB15F9821047C740007558E /* DocDetailViewController.swift */; };
 		DEB15F9B2104D2430007558E /* iData.png in Resources */ = {isa = PBXBuildFile; fileRef = DEB15F9A2104D2430007558E /* iData.png */; };
 		FDF2CDC047FC06CD1DC78699 /* Pods_iDataTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34353ACBDAA39B153D8F797F /* Pods_iDataTests.framework */; };
@@ -64,7 +65,6 @@
 		DE8F713C20FDA5AD00D3C0D4 /* iData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE8F713F20FDA5AD00D3C0D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE8F714120FDA5AD00D3C0D4 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		DE8F714320FDA5AD00D3C0D4 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DE8F714620FDA5AD00D3C0D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE8F714820FDA5AD00D3C0D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE8F714D20FDA5AD00D3C0D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +82,8 @@
 		DE8F717B20FDBFD700D3C0D4 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		DE8F717E20FDC01100D3C0D4 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		DE8F718020FDC41000D3C0D4 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		DE9329B62106FA7A005D41C9 /* HelpItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpItem.swift; sourceTree = "<group>"; };
+		DE9329B8210707C7005D41C9 /* AboutlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutlViewController.swift; sourceTree = "<group>"; };
 		DEB15F9821047C740007558E /* DocDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocDetailViewController.swift; sourceTree = "<group>"; };
 		DEB15F9A2104D2430007558E /* iData.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iData.png; sourceTree = "<group>"; };
 		E67D27BACEC38F191FE55BA0 /* Pods-iDataUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDataUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iDataUITests/Pods-iDataUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,8 +130,8 @@
 		DE20BA4421023DBB00FC0508 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				DE9329B8210707C7005D41C9 /* AboutlViewController.swift */,
 				DE8F714120FDA5AD00D3C0D4 /* MasterViewController.swift */,
-				DE8F714320FDA5AD00D3C0D4 /* DetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -137,8 +139,9 @@
 		DE20BA4521023DC500FC0508 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				DE20BA4421023DBB00FC0508 /* ViewController */,
 				DE8F714520FDA5AD00D3C0D4 /* Main.storyboard */,
+				DE9329B32106F960005D41C9 /* Model */,
+				DE20BA4421023DBB00FC0508 /* ViewController */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -239,6 +242,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		DE9329B32106F960005D41C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE9329B62106FA7A005D41C9 /* HelpItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F42F43149A67328EC44F91A9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +275,7 @@
 				DE8F713920FDA5AC00D3C0D4 /* Frameworks */,
 				DE8F713A20FDA5AC00D3C0D4 /* Resources */,
 				12E3C321ADDE281459A832CB /* [CP] Embed Pods Frameworks */,
+				DE9329BA21071822005D41C9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -463,6 +475,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DE9329BA21071822005D41C9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "REV=`date +%Y.%m.%d.%H.%M.%S`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion ${REV}\" \"${TARGET_BUILD_DIR}\"/${INFOPLIST_PATH}";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -470,15 +495,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE9329B9210707C7005D41C9 /* AboutlViewController.swift in Sources */,
 				DE4D43A220FE16CC006AC0C8 /* DocDetailCollectionViewCell.swift in Sources */,
 				DEB15F9921047C740007558E /* DocDetailViewController.swift in Sources */,
 				DE8F718120FDC41000D3C0D4 /* SearchTableViewCell.swift in Sources */,
 				DE8F717720FDB88600D3C0D4 /* Constraint.swift in Sources */,
-				DE8F714420FDA5AD00D3C0D4 /* DetailViewController.swift in Sources */,
 				DE8F717620FDB88600D3C0D4 /* DocDetail.swift in Sources */,
 				DE8F717820FDB88600D3C0D4 /* DUrl.swift in Sources */,
 				DE8F714220FDA5AD00D3C0D4 /* MasterViewController.swift in Sources */,
 				DE4D43A420FE1718006AC0C8 /* DocDetailHeaderCollectionReusableView.swift in Sources */,
+				DE9329B72106FA7A005D41C9 /* HelpItem.swift in Sources */,
 				DE8F717520FDB88600D3C0D4 /* Paper.swift in Sources */,
 				DE8F714020FDA5AD00D3C0D4 /* AppDelegate.swift in Sources */,
 				DE8F717F20FDC01100D3C0D4 /* SearchTableViewController.swift in Sources */,

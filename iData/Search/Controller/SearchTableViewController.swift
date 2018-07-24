@@ -15,12 +15,15 @@ import Alamofire
 class SearchTableViewController: UITableViewController {
     var paper: Paper?
     var searchResults = [PaperItem]()
-    var totalCount: Int? = nil
     var paperItem: PaperItem!
     internal var dUrl: DURL?
     var loadMoreStatus = false
+    var hasMoreData = true
     
     var searchController: UISearchController!
+    
+    @IBOutlet weak var loadMoreDataLabel: UILabel!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +59,7 @@ class SearchTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if let totalCount = totalCount {
+        if let totalCount = paper?.data?.totalCount {
             return "Total Count: " + String(totalCount)
         }
         
@@ -80,16 +83,14 @@ class SearchTableViewController: UITableViewController {
         let deltaOffset = maximumOffset - currentOffset
         
         if deltaOffset <= 0 {
-            if paper?.data?.start != nil {
-                loadMore()
-            }
+            loadMoreData()
         }
     }
     
-    func loadMore() {
-        if !loadMoreStatus {
+    func loadMoreData() {
+        if !loadMoreStatus && hasMoreData {
             self.loadMoreStatus = true
-            self.tableView.tableFooterView?.isHidden = false
+//            self.tableView.tableFooterView?.isHidden = false
             let searchBar = searchController.searchBar
             let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
             searchPapers(searchController.searchBar.text!, scope: scope, start: paper?.data?.start)
@@ -105,13 +106,17 @@ class SearchTableViewController: UITableViewController {
         
         let parameters: Parameters = [
             "app_id": app_id,
-            "access_token": access_token,
+            "access_token": "C3RoqraAz6nTJBhF",
             "keyword": searchText,
             "sort_type": "1",
             "db": scope,
             "start": start ?? "0",
             "advance": "0",
             ]
+        
+        hasMoreData = true
+        loadMoreDataLabel.text = "LoadMoreData"
+        activityIndicatorView.isHidden = false
         
         cancelRequest()
         
@@ -120,7 +125,8 @@ class SearchTableViewController: UITableViewController {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             guard let strongSelf = self else { return }
             strongSelf.loadMoreStatus = false
-            strongSelf.tableView.tableFooterView?.isHidden = true
+            strongSelf.activityIndicatorView.isHidden = true
+//            strongSelf.tableView.tableFooterView?.isHidden = true
             
             switch response.result {
             case.failure(let error):
@@ -133,8 +139,17 @@ class SearchTableViewController: UITableViewController {
                 }
                 break
             case .success(let paper):
+                print("paper = \(paper)" )
                 if let items = paper.data?.items {
                     strongSelf.paper = paper
+                    
+                    guard items.count != 0 else {
+                        strongSelf.hasMoreData = false
+                        strongSelf.loadMoreDataLabel.text = "NoMoreData"
+                        strongSelf.activityIndicatorView.isHidden = true
+                        return
+                    }
+                    
                     if start == "0" {
                         strongSelf.searchResults = items
                     } else {
@@ -143,7 +158,6 @@ class SearchTableViewController: UITableViewController {
                     if !(strongSelf.searchBarIsEmpty()) {
                         strongSelf.tableView.reloadData()
                     }
-                    print("paper = \(paper)" )
                 } else {
                     toast(contentView: strongSelf.view, message: "NetworkError")
                     print(response.error.debugDescription)

@@ -40,35 +40,23 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="lU2-CD-Pb8">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" image="iData.png" translatesAutoresizingMaskIntoConstraints="NO" id="3DZ-VS-Rck">
-                                            <rect key="frame" x="123.5" y="16" width="128" height="128"/>
+                                            <rect key="frame" x="123.5" y="-4" width="128" height="128"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="3DZ-VS-Rck" secondAttribute="height" multiplier="1:1" id="EH8-ck-dTF"/>
                                                 <constraint firstAttribute="width" constant="128" id="ncn-qG-2Zc"/>
                                             </constraints>
                                         </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dba-2k-cTG">
-                                            <rect key="frame" x="141" y="121.5" width="94" height="20.5"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dba-2k-cTG">
+                                            <rect key="frame" x="166.5" y="81.5" width="42" height="20.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iData" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frZ-O0-Fn0">
-                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frZ-O0-Fn0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOV-AA-P0V">
-                                                    <rect key="frame" x="50" y="0.0" width="21.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRA-4s-N2A">
-                                                    <rect key="frame" x="81.5" y="0.0" width="12.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="9"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -83,7 +71,7 @@
                                     </constraints>
                                 </view>
                                 <label key="tableFooterView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Copyright © 2018年 iOSDevLog. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" id="0XM-y9-sOw">
-                                    <rect key="frame" x="0.0" y="232" width="375" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="192" width="375" height="20.5"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -92,7 +80,7 @@
                                 </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HelpCell" textLabel="l1S-A3-nLt" style="IBUITableViewCellStyleDefault" id="Y8c-j4-YD9">
-                                        <rect key="frame" x="0.0" y="188" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="148" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y8c-j4-YD9" id="38e-Gl-ddV">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -102,7 +90,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -110,46 +98,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <imageView hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wechat" translatesAutoresizingMaskIntoConstraints="NO" id="Cb0-df-tGb">
-                                <rect key="frame" x="16" y="105.5" width="342" height="455"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Cb0-df-tGb" secondAttribute="height" multiplier="674:896" id="iBT-ud-ZXK"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="ceu-ix-D6R" appends="YES" id="hkA-Qr-pmM"/>
-                                </connections>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VUw-jc-0yf" firstAttribute="trailing" secondItem="1h1-eH-d8A" secondAttribute="trailing" id="0Xf-Ft-Gn6"/>
-                            <constraint firstItem="Cb0-df-tGb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="svH-Pt-448" secondAttribute="topMargin" id="FhU-Cd-Neb"/>
                             <constraint firstItem="VUw-jc-0yf" firstAttribute="bottom" secondItem="1h1-eH-d8A" secondAttribute="bottom" id="HxP-hz-6fK"/>
                             <constraint firstItem="1h1-eH-d8A" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" id="Txy-aB-O6R"/>
-                            <constraint firstItem="Cb0-df-tGb" firstAttribute="centerY" secondItem="svH-Pt-448" secondAttribute="centerY" id="ZbX-Ev-xXy"/>
-                            <constraint firstItem="Cb0-df-tGb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="svH-Pt-448" secondAttribute="leadingMargin" id="dw6-Ji-mcy"/>
                             <constraint firstItem="1h1-eH-d8A" firstAttribute="top" secondItem="VUw-jc-0yf" secondAttribute="top" id="iLt-DZ-vSb"/>
-                            <constraint firstItem="Cb0-df-tGb" firstAttribute="centerX" secondItem="svH-Pt-448" secondAttribute="centerX" id="p9x-9i-R62"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VUw-jc-0yf"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="About" id="mOI-FS-AaM"/>
                     <connections>
-                        <outlet property="bunderVersionLabel" destination="oRA-4s-N2A" id="hrH-qi-u6r"/>
                         <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
                         <outlet property="tableView" destination="1h1-eH-d8A" id="yXR-T0-waP"/>
-                        <outlet property="versionLabel" destination="jOV-AA-P0V" id="rr0-pE-xcR"/>
-                        <outlet property="wechatImage" destination="Cb0-df-tGb" id="bqT-w3-6kj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="ceu-ix-D6R">
-                    <connections>
-                        <action selector="wechatTaped:" destination="JEX-9P-axG" id="f6J-GR-ArR"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="709" y="129"/>
         </scene>
@@ -241,7 +207,6 @@
     <resources>
         <image name="PDF" width="40" height="40"/>
         <image name="iData.png" width="1024" height="1024"/>
-        <image name="wechat" width="674" height="896"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8jV-t9-kut"/>

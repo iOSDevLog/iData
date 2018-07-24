@@ -168,7 +168,7 @@
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="sFA-mi-Fhk">
                                             <rect key="frame" x="197" y="32" width="20" height="20"/>
                                         </activityIndicatorView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LoadMore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO6-LQ-9EF">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LoadMoreData" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BO6-LQ-9EF">
                                             <rect key="frame" x="20" y="20" width="375" height="44"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -182,6 +182,7 @@
                                 <constraint firstItem="ohA-h8-NCV" firstAttribute="centerY" secondItem="8XF-QM-wVO" secondAttribute="centerY" id="2hi-7v-EoS"/>
                                 <constraint firstItem="ohA-h8-NCV" firstAttribute="centerX" secondItem="8XF-QM-wVO" secondAttribute="centerX" id="KGE-Lg-EVi"/>
                             </constraints>
+                            <viewLayoutGuide key="safeArea" id="B3V-gk-xVS"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" rowHeight="371" id="RhO-4c-zxF" customClass="SearchTableViewCell" customModule="iData" customModuleProvider="target">
@@ -381,6 +382,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="HUN-rs-Agh"/>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="sFA-mi-Fhk" id="1IH-u2-vcv"/>
+                        <outlet property="loadMoreDataLabel" destination="BO6-LQ-9EF" id="trS-Yz-R9k"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Qt-Pf-3ZD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

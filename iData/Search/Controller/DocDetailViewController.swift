@@ -176,11 +176,23 @@ class DocDetailViewController: UIViewController {
                 "author": paperItem!.author!,
                 "tablename": paperItem!.tablename!
         ]
+        
         showLoadingHUD(contentView: self.view)
         Alamofire.request(kDUrl, method: .get, parameters: parameters).responseDURL { [weak self] response in
             guard let strongSelf = self else { return }
             hideLoadingHUD(contentView: strongSelf.view)
-            if let dUrl = response.result.value {
+            
+            switch response.result {
+            case.failure(let error):
+                let error = error as NSError
+                let isCancelled  = error.userInfo["NSLocalizedDescription"].debugDescription.contains("cancelled")
+                
+                if !isCancelled {
+                    toast(contentView: strongSelf.view, message: "NetworkError")
+                    print(response.error.debugDescription)
+                }
+                break
+            case .success(let dUrl):
                 strongSelf.dUrl = dUrl
                 if shouldDownload {
                     if let isPdf = dUrl.data?.isPDF {
@@ -198,6 +210,7 @@ class DocDetailViewController: UIViewController {
                     downloadedButton.state = .downloaded;
                     strongSelf.preview()
                 }
+                break
             }
         }
     }
