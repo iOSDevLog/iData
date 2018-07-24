@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8885F95CD5174DED76182C59 /* Pods_iData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3D9C004CA3259899D3F443A /* Pods_iData.framework */; };
-		DE01FD9F210748CF00268546 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE01FD9E210748CF00268546 /* InfoPlist.strings */; };
 		DE01FDA02107490E00268546 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE01FDA22107490E00268546 /* Search.storyboard */; };
 		DE01FDA32107491800268546 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE01FDA52107491800268546 /* LaunchScreen.storyboard */; };
 		DE01FDB12107690000268546 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE01FDAF2107690000268546 /* InfoPlist.strings */; };
@@ -32,8 +31,8 @@
 		DE8F718120FDC41000D3C0D4 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F718020FDC41000D3C0D4 /* SearchTableViewCell.swift */; };
 		DE9329B72106FA7A005D41C9 /* HelpItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9329B62106FA7A005D41C9 /* HelpItem.swift */; };
 		DE9329B9210707C7005D41C9 /* AboutlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9329B8210707C7005D41C9 /* AboutlViewController.swift */; };
+		DE9B87B12107B01300B0BDAE /* Apple Chancery.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DE9B87B02107B01300B0BDAE /* Apple Chancery.ttf */; };
 		DEB15F9921047C740007558E /* DocDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB15F9821047C740007558E /* DocDetailViewController.swift */; };
-		DEB15F9B2104D2430007558E /* iData.png in Resources */ = {isa = PBXBuildFile; fileRef = DEB15F9A2104D2430007558E /* iData.png */; };
 		FDF2CDC047FC06CD1DC78699 /* Pods_iDataTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34353ACBDAA39B153D8F797F /* Pods_iDataTests.framework */; };
 		FF4521D4BBDC05ADD227757A /* Pods_iDataUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79B776D39CA23B952E86D96E /* Pods_iDataUITests.framework */; };
 /* End PBXBuildFile section */
@@ -64,7 +63,6 @@
 		9695486E6520D34956506056 /* Pods-iDataTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDataTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iDataTests/Pods-iDataTests.release.xcconfig"; sourceTree = "<group>"; };
 		9FF25BB37C2BD1186D7554EC /* Pods-iDataTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDataTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iDataTests/Pods-iDataTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A3D9C004CA3259899D3F443A /* Pods_iData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE01FD9E210748CF00268546 /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		DE01FDA12107490E00268546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Search.storyboard; sourceTree = "<group>"; };
 		DE01FDA42107491800268546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE01FDAA2107496100268546 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -102,8 +100,8 @@
 		DE8F718020FDC41000D3C0D4 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		DE9329B62106FA7A005D41C9 /* HelpItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpItem.swift; sourceTree = "<group>"; };
 		DE9329B8210707C7005D41C9 /* AboutlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutlViewController.swift; sourceTree = "<group>"; };
+		DE9B87B02107B01300B0BDAE /* Apple Chancery.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple Chancery.ttf"; sourceTree = "<group>"; };
 		DEB15F9821047C740007558E /* DocDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocDetailViewController.swift; sourceTree = "<group>"; };
-		DEB15F9A2104D2430007558E /* iData.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iData.png; sourceTree = "<group>"; };
 		E67D27BACEC38F191FE55BA0 /* Pods-iDataUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDataUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iDataUITests/Pods-iDataUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,16 +206,15 @@
 		DE8F713E20FDA5AD00D3C0D4 /* iData */ = {
 			isa = PBXGroup;
 			children = (
-				DEB15F9A2104D2430007558E /* iData.png */,
 				DE20BA4521023DC500FC0508 /* Main */,
 				DE8F717D20FDBFF200D3C0D4 /* Search */,
 				DE8F714820FDA5AD00D3C0D4 /* Assets.xcassets */,
 				DE8F714D20FDA5AD00D3C0D4 /* Info.plist */,
 				DE01FDB82107690000268546 /* Localizable.strings */,
 				DE01FDB22107690000268546 /* InfoPlist.strings */,
+				DE9B87B02107B01300B0BDAE /* Apple Chancery.ttf */,
 				DE01FDA52107491800268546 /* LaunchScreen.storyboard */,
 				DE8F713F20FDA5AD00D3C0D4 /* AppDelegate.swift */,
-				DE01FD9E210748CF00268546 /* InfoPlist.strings */,
 			);
 			path = iData;
 			sourceTree = "<group>";
@@ -398,11 +395,10 @@
 			files = (
 				DE8F714920FDA5AD00D3C0D4 /* Assets.xcassets in Resources */,
 				DE01FDB42107690000268546 /* InfoPlist.strings in Resources */,
-				DE01FD9F210748CF00268546 /* InfoPlist.strings in Resources */,
+				DE9B87B12107B01300B0BDAE /* Apple Chancery.ttf in Resources */,
 				DE01FDA32107491800268546 /* LaunchScreen.storyboard in Resources */,
 				DE01FDA02107490E00268546 /* Search.storyboard in Resources */,
 				DE01FDBA2107690000268546 /* Localizable.strings in Resources */,
-				DEB15F9B2104D2430007558E /* iData.png in Resources */,
 				DE8F714720FDA5AD00D3C0D4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -676,6 +672,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMPRESS_PNG_FILES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -699,6 +696,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRIP_PNG_TEXT = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -738,6 +736,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COMPRESS_PNG_FILES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -754,6 +753,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				STRIP_PNG_TEXT = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -766,7 +766,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UC3LEF3795;
 				INFOPLIST_FILE = iData/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -787,7 +787,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = UC3LEF3795;
 				INFOPLIST_FILE = iData/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

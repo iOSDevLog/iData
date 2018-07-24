@@ -11,6 +11,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Apple Chancery.ttf">
+            <string>Apple-Chancery</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--iData-->
         <scene sceneID="pY4-Hu-kfo">
@@ -43,13 +48,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" image="iData.png" translatesAutoresizingMaskIntoConstraints="NO" id="3DZ-VS-Rck">
-                                            <rect key="frame" x="123.5" y="36" width="128" height="128"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="3DZ-VS-Rck" secondAttribute="height" multiplier="1:1" id="EH8-ck-dTF"/>
-                                                <constraint firstAttribute="width" constant="128" id="ncn-qG-2Zc"/>
-                                            </constraints>
-                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iData" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cU-hH-s3v">
+                                            <rect key="frame" x="142.5" y="71.5" width="90.5" height="57"/>
+                                            <fontDescription key="fontDescription" name="Apple-Chancery" family="Apple Chancery" pointSize="36"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dba-2k-cTG">
                                             <rect key="frame" x="141" y="161.5" width="94" height="20.5"/>
                                             <subviews>
@@ -76,14 +80,14 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="3DZ-VS-Rck" firstAttribute="centerX" secondItem="lU2-CD-Pb8" secondAttribute="centerX" id="1c5-FI-sRn"/>
-                                        <constraint firstItem="3DZ-VS-Rck" firstAttribute="centerY" secondItem="lU2-CD-Pb8" secondAttribute="centerY" id="RVH-MD-Co6"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Dba-2k-cTG" secondAttribute="bottom" constant="10" id="Vkr-3v-w7A"/>
                                         <constraint firstItem="Dba-2k-cTG" firstAttribute="centerX" secondItem="lU2-CD-Pb8" secondAttribute="centerX" id="cpb-2z-eit"/>
+                                        <constraint firstItem="8cU-hH-s3v" firstAttribute="centerY" secondItem="lU2-CD-Pb8" secondAttribute="centerY" id="gEV-qP-JvW"/>
+                                        <constraint firstItem="8cU-hH-s3v" firstAttribute="centerX" secondItem="lU2-CD-Pb8" secondAttribute="centerX" id="y20-Hb-xs3"/>
                                     </constraints>
                                 </view>
-                                <label key="tableFooterView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Copyright © 2018年 iOSDevLog. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" id="0XM-y9-sOw">
-                                    <rect key="frame" x="0.0" y="272" width="375" height="20.5"/>
+                                <label key="tableFooterView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Copyright © 2018年 iOSDevLog. All rights reserved." textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" minimumFontSize="10" id="0XM-y9-sOw">
+                                    <rect key="frame" x="0.0" y="272" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -240,7 +244,6 @@
     </scenes>
     <resources>
         <image name="PDF" width="40" height="40"/>
-        <image name="iData.png" width="1024" height="1024"/>
         <image name="wechat" width="674" height="896"/>
     </resources>
     <inferredMetricsTieBreakers>
