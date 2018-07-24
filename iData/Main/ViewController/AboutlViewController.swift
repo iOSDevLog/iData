@@ -20,16 +20,16 @@ class AboutlViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let helps = [
-        HelpItem(helpName: "iData 官方网站", helpValue: "https://www.cn-ki.net 点击查看。", helpUrl: "https://www.cn-ki.net"),
-        HelpItem(helpName: "iData for iOS 开发网站", helpValue: "https://github.com/iOSDevLog/iData 点击查看。", helpUrl: "https://github.com/iOSDevLog/iData"),
-        HelpItem(helpName: "iData 简介", helpValue: "iData 是第三方交流学术成果的公益互联网项目，旨在促进知识的传播和最新学术科技的共享，所有信息均来自公开、透明的互联网查询网站，iData 重新对这些信息进行整合和优化，从而高效地输出有用信息，提高人与知识的连接效率。iData 从创建之初便提供免费的学术文献浏览和下载。\n\n 点击查看更多。", helpUrl: "https://user.cn-ki.net/usercenter/help"),
-        HelpItem(helpName: "iData for iOS 简介", helpValue: "iData 的 iOS 客户端，由 iosdevlog 开发，点击去 App Store 查看。", helpUrl: nil),
-        HelpItem(helpName: "下载限制", helpValue: "iData for iOS 目前下载数量没有什么限制。但如果大批量高速调用系统可能会有一定的频率限制。\n在获取最新的文献或者不常使用的文献的时候，下载 和 预览 地址可能为空，这是因为系统需要对当前请求的文献进行同步，同步结束后再次请求便会有值，时间耗时一般在几秒到60秒不等。\n如果下载 和 预览 地址为空，则会打开在线网址。下载 和 预览 有效期为60秒，有效期为24小时。", helpUrl: nil),
-        HelpItem(helpName: "可以下载哪些文献", helpValue: "SCDB(综合),CJFQ(期刊),CDMD(博硕),CIPD(会议),CCND(报纸)。\n中文期刊、硕博、会议、报纸全库都可以下载，以及部分的年鉴内容(年鉴需要通过cnki镜像下载)，如果您发现有不能下载的文献，请发邮件至 idata@cn-ki.net 反馈咨询。", helpUrl: nil),
-        HelpItem(helpName: "如何捐助", helpValue: "github 上 star，或者点击查看更多。", helpUrl: "https://github.com/iOSDevLog/iData"),
-        HelpItem(helpName: "评分", helpValue: "如果觉得对你有帮助，欢迎点击好评。", helpUrl: nil),
-        HelpItem(helpName: "联系 iData", helpValue: "任何建议请发邮件至 idata@cn-ki.net 。个别文献可能会出现数据错误，表现为 pdf 文件打开提示出错，需要向 idata 反馈以便进行人工处理才能解决。网站打不开，权限有问题，下载不了，无法预览等问题，请加 QQ1030457845 注明 iData 用户。", helpUrl: "https://www.cn-ki.net"),
-        HelpItem(helpName: "联系 iData for iOS", helpValue: "点击显示二维码，扫描添加微信。\n或者任何建议请发邮件至 iosdevlog@iosdevlog.com\n或者在 https://github.com/iOSDevLog/iData/issues 上提出。", helpUrl: nil),
+        HelpItem(helpName: NSLocalizedString("helpName0", comment: "helpName0"), helpValue: NSLocalizedString("helpValue0", comment: "helpValue0"), helpUrl: "https://www.cn-ki.net"),
+        HelpItem(helpName: NSLocalizedString("helpName1", comment: "helpName1"), helpValue: NSLocalizedString("helpValue1", comment: "helpValue1"), helpUrl: "https://github.com/iOSDevLog/iData"),
+        HelpItem(helpName: NSLocalizedString("helpName2", comment: "helpName2"), helpValue: NSLocalizedString("helpValue2", comment: "helpValue2"), helpUrl: "https://user.cn-ki.net/usercenter/help"),
+        HelpItem(helpName: NSLocalizedString("helpName3", comment: "helpName3"), helpValue: NSLocalizedString("helpValue3", comment: "helpValue3"), helpUrl: nil),
+        HelpItem(helpName: NSLocalizedString("helpName4", comment: "helpName4"), helpValue: NSLocalizedString("helpValue4", comment: "helpValue4"), helpUrl: nil),
+        HelpItem(helpName: NSLocalizedString("helpName5", comment: "helpName5"), helpValue: NSLocalizedString("helpValue5", comment: "helpValue5"), helpUrl: nil),
+        HelpItem(helpName: NSLocalizedString("helpName6", comment: "helpName6"), helpValue: NSLocalizedString("helpValue6", comment: "helpValue6"), helpUrl: "https://github.com/iOSDevLog/iData"),
+        HelpItem(helpName: NSLocalizedString("helpName7", comment: "helpName7"), helpValue: NSLocalizedString("helpValue7", comment: "helpValue7"), helpUrl: nil),
+        HelpItem(helpName: NSLocalizedString("helpName8", comment: "helpName8"), helpValue: NSLocalizedString("helpValue8", comment: "helpValue8"), helpUrl: "https://www.cn-ki.net"),
+        HelpItem(helpName: NSLocalizedString("helpName9", comment: "helpName9"), helpValue: NSLocalizedString("helpValue9", comment: "helpValue9"), helpUrl: nil),
     ]
 
     override func viewDidLoad() {
@@ -42,6 +42,7 @@ class AboutlViewController: UIViewController {
         let version = infoDictionary["CFBundleShortVersionString"] as! String
         let bundleVersion = infoDictionary["CFBundleVersion"] as! String
         
+        title = NSLocalizedString("About", comment: "About")
         versionLabel.text = version
         bunderVersionLabel.text = "(\(bundleVersion))"
     }
@@ -122,11 +123,11 @@ extension AboutlViewController: UITableViewDelegate {
     }
     
     func openAppStore() {
-        let urlPath = "itms-apps://itunes.apple.com/us/app/id" + iTunesItemIdentifier
+        let urlPath = NSLocalizedString("iTunesItemIdentifier", comment: "iTunesItemIdentifier") + iTunesItemIdentifier
         if let appStoreUrl = URL(string: urlPath) {
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(appStoreUrl, options: [:]) { (success) in
-                    print("Open iTunes")
+                    print(NSLocalizedString("Open iTunes", comment: "Open iTunes"))
                 }
             } else {
                 UIApplication.shared.openURL(appStoreUrl)
@@ -155,7 +156,7 @@ extension AboutlViewController: UITableViewDelegate {
 extension AboutlViewController: SKStoreProductViewControllerDelegate {
     func productViewControllerDidFinish(_ viewController: SKStoreProductViewController) {
         self.dismiss(animated: true) {
-            toast(contentView: self.view, message: "Thanks")
+            toast(contentView: self.view, message: NSLocalizedString("Thanks", comment: "Thanks"))
         }
     }
 }

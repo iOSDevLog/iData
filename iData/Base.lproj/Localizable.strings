@@ -1,0 +1,141 @@
+/* abstract */
+"abstract" = "abstract";
+
+/* About */
+"About" = "About";
+
+/* author */
+"author" = "author";
+
+/* CCND */
+"CCND" = "CCND";
+
+/* CDMD */
+"CDMD" = "CDMD";
+
+/* CIPD */
+"CIPD" = "CIPD";
+
+/* CJFQ */
+"CJFQ" = "CJFQ";
+
+/* Download */
+"Download" = "Download";
+
+/* DownloadError */
+"DownloadError" = "Download Error";
+
+/* fund */
+"fund" = "fund";
+
+/* helpName0 */
+"helpName0" = "iData Official Site";
+
+/* helpName1 */
+"helpName1" = "iData for iOS Developer Site";
+
+/* helpName2 */
+"helpName2" = "About iData";
+
+/* helpName3 */
+"helpName3" = "About iData for iOS";
+
+/* helpName4 */
+"helpName4" = "Download limit";
+
+/* helpName5 */
+"helpName5" = "What documents can be downloaded";
+
+/* helpName6 */
+"helpName6" = "How to Donate";
+
+/* helpName7 */
+"helpName7" = "Rating";
+
+/* helpName8 */
+"helpName8" = "Contact iData";
+
+/* helpName9 */
+"helpName9" = "Contact iData for iOS";
+
+/* helpValue0 */
+"helpValue0" = "https://www.cn-ki.net Click to view";
+
+/* helpValue1 */
+"helpValue1" = "https://github.com/iOSDevLog/iData Click to view";
+
+/* helpValue2 */
+"helpValue2" = "iData is a third party to exchange academic achievements of the public welfare Internet projects, to promote the dissemination of knowledge and the latest scientific and technological sharing, all information from the open, transparent Internet search site, iData this information to consolidate and optimize, so as to efficiently output useful information, improve the connection between people and knowledge efficiency. iData provides free academic literature browsing and downloading from the beginning of its creation.\n Click to view more detail.";
+
+/* helpValue3 */
+"helpValue3" = "iOS Client of iData，developed by iOSDevLog, click to go to the App Store to view more detail.";
+
+/* helpValue4 */
+"helpValue4" = "There are no restrictions on the number of downloads available of iData for iOS . However, if a large volume of high-speed call system may have a certain frequency limit.\nThe download and preview addresses may be empty when obtaining the latest literature or infrequently used literature, because the system needs to synchronize the current requested literature, and the request will have a value once the synchronization is over, typically in seconds to 60 seconds.  \nIt will open the online URL if the download and preview addresses are empty. The download and preview are valid for 60 seconds and online URL are valid for 24 hours.";
+
+/* helpValue5 */
+"helpValue5" = "SCDB(综合),CJFQ(期刊),CDMD(博硕),CIPD(会议),CCND(报纸)。\nWhole library can be downloaded, as well as part of the Yearbook content (yearbook needs to download through cnki mirror), if you find that there is no downloadable literature, please email to idata@cn-ki.net feedback.";
+
+/* helpValue6 */
+"helpValue6" = "star on github，or Click to view more detail";
+
+/* helpValue7 */
+"helpValue7" = "If you feel that iData for iOS is helpful to you, please click to give a favorable comment.";
+
+/* helpValue8 */
+"helpValue8" = "Any suggestions please send an email to idata@cn-ki.net. Individual literature may be a data error, shown as a PDF file open prompt error, need to idata feedback for manual processing to solve. The website cannot open, the permission has the question, cannot download, cannot preview and so on question, please add the QQ 1030457845 to indicate iData user.";
+
+/* helpValue9 */
+"helpValue9" = "Click on show developer's QR code.\nor any suggestions please send an email to iosdevlog@iosdevlog.com\nor Ask a question on  https://github.com/iOSDevLog/iData/issues.";
+
+/* iTunesItemIdentifier */
+"iTunesItemIdentifier" = "itms-apps://itunes.apple.com/en/app/id";
+
+/* journal */
+"journal" = "journal";
+
+/* kws */
+"kws" = "keywords";
+
+/* LoadMoreData */
+"LoadMoreData" = "Loading...";
+
+/* cancelled */
+"cancelled" = "cancelled";
+
+/* NetworkError */
+"NetworkError" = "Network error，please try again later";
+
+/* NoMoreData */
+"NoMoreData" = "All finished loading";
+
+/* None */
+"None" = "None";
+
+/* Open */
+"Open" = "Open";
+
+/* Open iTunes */
+"Open iTunes" = "Open iTunes";
+
+/* orgniz */
+"orgniz" = "orgnization";
+
+/* Preview */
+"Preview" = "Preview";
+
+/* SCDB */
+"SCDB" = "SCDB";
+
+/* Search Papers */
+"Search Papers" = "Search Papers";
+
+/* Thanks */
+"Thanks" = "Thanks 🙏";
+
+/* title */
+"title" = "title";
+
+/* Total Count: */
+"Total Count: " = "Total Count: ";
+

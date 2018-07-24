@@ -1,0 +1,33 @@
+/* Class = "UILabel"; text = "Copyright © 2018年 iOSDevLog. All rights reserved."; ObjectID = "0XM-y9-sOw"; */
+"0XM-y9-sOw.text" = "版权所有 © 2018年 iOSDevLog 保留所有权利";
+
+/* Class = "UITableViewController"; title = "iData"; ObjectID = "7bK-jq-Zjz"; */
+"7bK-jq-Zjz.title" = "知识搜索";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Arm-wq-HPj"; */
+"Arm-wq-HPj.text" = "标题";
+
+/* Class = "UILabel"; text = "iData"; ObjectID = "frZ-O0-Fn0"; */
+"frZ-O0-Fn0.text" = "知识搜索";
+
+/* Class = "UIViewController"; title = "About"; ObjectID = "JEX-9P-axG"; */
+"JEX-9P-axG.title" = "关于";
+
+/* Class = "UILabel"; text = "1.0"; ObjectID = "jOV-AA-P0V"; */
+"jOV-AA-P0V.text" = "1.0";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "l1S-A3-nLt"; */
+"l1S-A3-nLt.text" = "标题";
+
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "mOI-FS-AaM"; */
+"mOI-FS-AaM.title" = "关于";
+
+/* Class = "UILabel"; text = "1.0"; ObjectID = "oRA-4s-N2A"; */
+"oRA-4s-N2A.text" = "1.0";
+
+/* Class = "UINavigationController"; title = "iData"; ObjectID = "RMx-3f-FxP"; */
+"RMx-3f-FxP.title" = "知识搜索";
+
+/* Class = "UINavigationItem"; title = "iData"; ObjectID = "Zdf-7t-Un8"; */
+"Zdf-7t-Un8.title" = "知识搜索";
+

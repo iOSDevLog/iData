@@ -60,7 +60,7 @@ class SearchTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if let totalCount = paper?.data?.totalCount {
-            return "Total Count: " + String(totalCount)
+            return NSLocalizedString("Total Count: ", comment: "Total Count: ") + String(totalCount)
         }
         
         return nil
@@ -106,7 +106,7 @@ class SearchTableViewController: UITableViewController {
         
         let parameters: Parameters = [
             "app_id": app_id,
-            "access_token": "C3RoqraAz6nTJBhF",
+            "access_token": access_token,
             "keyword": searchText,
             "sort_type": "1",
             "db": scope,
@@ -114,11 +114,11 @@ class SearchTableViewController: UITableViewController {
             "advance": "0",
             ]
         
-        hasMoreData = true
-        loadMoreDataLabel.text = "LoadMoreData"
-        activityIndicatorView.isHidden = false
-        
         cancelRequest()
+        
+        hasMoreData = true
+        loadMoreDataLabel.text = NSLocalizedString("LoadMoreData", comment: "LoadMoreData")
+        activityIndicatorView.isHidden = false
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         Alamofire.request(kSearchUrl, method: .get, parameters: parameters).responsePaper { [weak self] response in
@@ -131,10 +131,12 @@ class SearchTableViewController: UITableViewController {
             switch response.result {
             case.failure(let error):
                 let error = error as NSError
-                let isCancelled  = error.userInfo["NSLocalizedDescription"].debugDescription.contains("cancelled")
+                let isCancelled  = error.userInfo["NSLocalizedDescription"].debugDescription.contains(NSLocalizedString("cancelled", comment: "cancelled"))
                 
                 if !isCancelled {
-                    toast(contentView: strongSelf.view, message: "NetworkError")
+                    toast(contentView: strongSelf.view, message: NSLocalizedString("NetworkError", comment: "NetworkError"))
+                    strongSelf.loadMoreDataLabel.text = NSLocalizedString("NetworkError", comment: "NetworkError")
+                    
                     print(response.error.debugDescription)
                 }
                 break
@@ -145,7 +147,7 @@ class SearchTableViewController: UITableViewController {
                     
                     guard items.count != 0 else {
                         strongSelf.hasMoreData = false
-                        strongSelf.loadMoreDataLabel.text = "NoMoreData"
+                        strongSelf.loadMoreDataLabel.text = NSLocalizedString("NoMoreData", comment: "NoMoreData")
                         strongSelf.activityIndicatorView.isHidden = true
                         return
                     }
@@ -158,8 +160,9 @@ class SearchTableViewController: UITableViewController {
                     if !(strongSelf.searchBarIsEmpty()) {
                         strongSelf.tableView.reloadData()
                     }
-                } else {
-                    toast(contentView: strongSelf.view, message: "NetworkError")
+                } else if let status = paper.status, status == 0 {
+                    toast(contentView: strongSelf.view, message: paper.message!)
+                    strongSelf.loadMoreDataLabel.text = NSLocalizedString("NetworkError", comment: "NetworkError")
                     print(response.error.debugDescription)
                 }
                 break

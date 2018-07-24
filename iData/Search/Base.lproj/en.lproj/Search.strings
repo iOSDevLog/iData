@@ -1,0 +1,54 @@
+
+/* Class = "UIViewController"; title = "DocDetail"; ObjectID = "2Ss-i7-XnP"; */
+"2Ss-i7-XnP.title" = "DocDetail";
+
+/* Class = "UILabel"; text = "abstract"; ObjectID = "5J8-gm-66R"; */
+"5J8-gm-66R.text" = "abstract";
+
+/* Class = "UILabel"; text = "author"; ObjectID = "7ac-s9-g2A"; */
+"7ac-s9-g2A.text" = "author";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "9CE-VA-LOF"; */
+"9CE-VA-LOF.text" = "Label";
+
+/* Class = "UILabel"; text = "LoadMoreData"; ObjectID = "BO6-LQ-9EF"; */
+"BO6-LQ-9EF.text" = "Loading...";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "D9b-h8-4jj"; */
+"D9b-h8-4jj.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "O52-C8-WR9"; */
+"O52-C8-WR9.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Uf5-LT-xR3"; */
+"Uf5-LT-xR3.text" = "Label";
+
+/* Class = "UILabel"; text = "source"; ObjectID = "WTH-MJ-ikO"; */
+"WTH-MJ-ikO.text" = "source";
+
+/* Class = "UILabel"; text = "title"; ObjectID = "Ytm-F5-OmX"; */
+"Ytm-F5-OmX.text" = "title";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ajn-c1-vE6"; */
+"ajn-c1-vE6.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "c5X-5G-NBa"; */
+"c5X-5G-NBa.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "dOI-lv-7BG"; */
+"dOI-lv-7BG.text" = "Label";
+
+/* Class = "UILabel"; text = "publishTime"; ObjectID = "mY1-bY-d0K"; */
+"mY1-bY-d0K.text" = "publish Time";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nCq-dF-0F6"; */
+"nCq-dF-0F6.text" = "Label";
+
+/* Class = "UILabel"; text = "orgniz"; ObjectID = "po3-Ai-1W7"; */
+"po3-Ai-1W7.text" = "organization";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "q9q-k7-V5a"; */
+"q9q-k7-V5a.text" = "Label";
+
+/* Class = "UILabel"; text = "dataBase"; ObjectID = "s42-03-aci"; */
+"s42-03-aci.text" = "dataBase";

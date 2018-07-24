@@ -24,10 +24,12 @@ import Alamofire
 public struct Paper: Codable {
     public let data: PaperDataClass?
     public let status: Int?
+    public let message: String?
     
-    public init(data: PaperDataClass?, status: Int?) {
+    public init(data: PaperDataClass?, status: Int?, message: String) {
         self.data = data
         self.status = status
+        self.message = message
     }
 }
 

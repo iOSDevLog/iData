@@ -40,18 +40,18 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="lU2-CD-Pb8">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" image="iData.png" translatesAutoresizingMaskIntoConstraints="NO" id="3DZ-VS-Rck">
-                                            <rect key="frame" x="123.5" y="16" width="128" height="128"/>
+                                            <rect key="frame" x="123.5" y="36" width="128" height="128"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="3DZ-VS-Rck" secondAttribute="height" multiplier="1:1" id="EH8-ck-dTF"/>
                                                 <constraint firstAttribute="width" constant="128" id="ncn-qG-2Zc"/>
                                             </constraints>
                                         </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dba-2k-cTG">
-                                            <rect key="frame" x="141" y="121.5" width="94" height="20.5"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dba-2k-cTG">
+                                            <rect key="frame" x="141" y="161.5" width="94" height="20.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iData" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frZ-O0-Fn0">
                                                     <rect key="frame" x="0.0" y="0.0" width="40" height="20.5"/>
@@ -66,7 +66,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRA-4s-N2A">
-                                                    <rect key="frame" x="81.5" y="0.0" width="12.5" height="20.5"/>
+                                                    <rect key="frame" x="81.5" y="9.5" width="12.5" height="11"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="9"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -83,7 +83,7 @@
                                     </constraints>
                                 </view>
                                 <label key="tableFooterView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Copyright © 2018年 iOSDevLog. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" id="0XM-y9-sOw">
-                                    <rect key="frame" x="0.0" y="232" width="375" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="272" width="375" height="20.5"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -92,7 +92,7 @@
                                 </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HelpCell" textLabel="l1S-A3-nLt" style="IBUITableViewCellStyleDefault" id="Y8c-j4-YD9">
-                                        <rect key="frame" x="0.0" y="188" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="228" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y8c-j4-YD9" id="38e-Gl-ddV">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>

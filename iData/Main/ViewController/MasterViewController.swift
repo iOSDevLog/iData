@@ -42,7 +42,7 @@ class MasterViewController: UITableViewController {
         } else {
             // Fallback on earlier versions
         }
-        searchController.searchBar.placeholder = "Search Papers"
+        searchController.searchBar.placeholder = NSLocalizedString("Search Papers", comment: "Search Papers")
         if #available(iOS 11.0, *) {
             navigationItem.searchController = searchController
         } else {
@@ -52,7 +52,7 @@ class MasterViewController: UITableViewController {
         definesPresentationContext = true
         
         // Setup the Scope Bar
-        searchController.searchBar.scopeButtonTitles = ["SCDB", "CJFQ", "CDMD", "CIPD", "CCND"]
+        searchController.searchBar.scopeButtonTitles = [NSLocalizedString("SCDB", comment: "SCDB"), NSLocalizedString("CJFQ", comment: "CJFQ"), NSLocalizedString("CDMD", comment: "CDMD"), NSLocalizedString("CIPD", comment: "CIPD"), NSLocalizedString("CCND", comment: "CCND")]
         searchController.searchBar.delegate = searchResultsController
         
         self.tableView.tableFooterView = UIView()
@@ -113,8 +113,15 @@ class MasterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            contents.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let content = contents[indexPath.row]
+            let fileManager = FileManager.default
+            
+            if fileManager.fileExists(atPath: content.path) {
+                try? fileManager.removeItem(at: content)
+                NotificationCenter.default.post(name: .documentDirectoryDidChange, object: nil)
+                contents.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }

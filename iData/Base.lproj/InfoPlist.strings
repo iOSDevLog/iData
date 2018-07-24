@@ -1,0 +1,6 @@
+/* Bundle name */
+"CFBundleName" = "$(PRODUCT_NAME)";
+
+/* Bundle Display name */
+"CFBundleDisplayName" = "CFBundleDisplayName";
+

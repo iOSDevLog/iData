@@ -22,13 +22,13 @@ class DocDetailViewController: UIViewController {
     var dUrl: DURL?
     
     let titles = [
-        "title",
-        "author",
-        "journal",
-        "orgniz",
-        "kws",
-        "fund",
-        "abstract",
+        NSLocalizedString("title", comment: "title"),
+        NSLocalizedString("author", comment: "author"),
+        NSLocalizedString("journal", comment: "journal"),
+        NSLocalizedString("orgniz", comment: "orgniz"),
+        NSLocalizedString("kws", comment: "kws"),
+        NSLocalizedString("fund", comment: "fund"),
+        NSLocalizedString("abstract", comment: "abstract"),
         ]
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -40,9 +40,9 @@ class DocDetailViewController: UIViewController {
         
         self.previewButton.startDownloadButton.cleanDefaultAppearance()
         self.previewButton.downloadedButton.cleanDefaultAppearance()
-        self.previewButton.startDownloadButton.setTitle("Preview", for: .normal)
+        self.previewButton.startDownloadButton.setTitle(NSLocalizedString("Preview", comment: "Preview"), for: .normal)
         self.previewButton.startDownloadButton.setTitleColor(UIColor.white, for: .normal)
-        self.previewButton.downloadedButton.setTitle("Preview", for: .normal)
+        self.previewButton.downloadedButton.setTitle(NSLocalizedString("Preview", comment: "Preview"), for: .normal)
         self.previewButton.downloadedButton.setTitleColor(UIColor.white, for: .normal)
         self.previewButton.layer.masksToBounds = true
         self.previewButton.layer.cornerRadius = 10
@@ -51,9 +51,9 @@ class DocDetailViewController: UIViewController {
         
         self.downloadButton.startDownloadButton.cleanDefaultAppearance()
         self.downloadButton.downloadedButton.cleanDefaultAppearance()
-        self.downloadButton.startDownloadButton.setTitle("Download", for: .normal)
+        self.downloadButton.startDownloadButton.setTitle(NSLocalizedString("Download", comment: "Download"), for: .normal)
         self.downloadButton.startDownloadButton.setTitleColor(UIColor.white, for: .normal)
-        self.downloadButton.downloadedButton.setTitle("Open", for: .normal)
+        self.downloadButton.downloadedButton.setTitle(NSLocalizedString("Open", comment: "Open"), for: .normal)
         self.downloadButton.downloadedButton.setTitleColor(UIColor.white, for: .normal)
         self.downloadButton.layer.masksToBounds = true
         self.downloadButton.layer.cornerRadius = 10
@@ -83,10 +83,10 @@ class DocDetailViewController: UIViewController {
             switch response.result {
             case.failure(let error):
                 let error = error as NSError
-                let isCancelled  = error.userInfo["NSLocalizedDescription"].debugDescription.contains("cancelled")
+                let isCancelled  = error.userInfo["NSLocalizedDescription"].debugDescription.contains(NSLocalizedString("cancelled", comment: "cancelled"))
                 
                 if !isCancelled {
-                    toast(contentView: strongSelf.view, message: "NetworkError")
+                    toast(contentView: strongSelf.view, message: NSLocalizedString("NetworkError", comment: "NetworkError"))
                     print(response.error.debugDescription)
                 }
                 break
@@ -95,7 +95,7 @@ class DocDetailViewController: UIViewController {
                     strongSelf.docData = docDetailData
                     strongSelf.collectionView?.reloadData()
                 } else {
-                    toast(contentView: strongSelf.view, message: "NetworkError")
+                    toast(contentView: strongSelf.view, message: NSLocalizedString("NetworkError", comment: "NetworkError"))
                     print(response.error.debugDescription)
                 }
                 break
@@ -106,7 +106,7 @@ class DocDetailViewController: UIViewController {
     }
     
     fileprivate func setionTitle(_ indexPath: IndexPath) -> String? {
-        var titleString: String? = "None"
+        var titleString: String? = NSLocalizedString("None", comment: "None")
         
         switch indexPath.section {
         case 0:
@@ -160,7 +160,7 @@ class DocDetailViewController: UIViewController {
         }
         
         if titleString == nil {
-            titleString = "None"
+            titleString = NSLocalizedString("None", comment: "None")
         }
         
         return titleString
@@ -185,10 +185,10 @@ class DocDetailViewController: UIViewController {
             switch response.result {
             case.failure(let error):
                 let error = error as NSError
-                let isCancelled  = error.userInfo["NSLocalizedDescription"].debugDescription.contains("cancelled")
+                let isCancelled  = error.userInfo["NSLocalizedDescription"].debugDescription.contains(NSLocalizedString("cancelled", comment: "cancelled"))
                 
                 if !isCancelled {
-                    toast(contentView: strongSelf.view, message: "NetworkError")
+                    toast(contentView: strongSelf.view, message: NSLocalizedString("NetworkError", comment: "NetworkError"))
                     print(response.error.debugDescription)
                 }
                 break
@@ -257,11 +257,11 @@ class DocDetailViewController: UIViewController {
                 switch response.result {
                 case.failure(let error):
                     let error = error as NSError
-                    let isCancelled  = error.userInfo["NSLocalizedDescription"].debugDescription.contains("cancelled")
+                    let isCancelled  = error.userInfo["NSLocalizedDescription"].debugDescription.contains(NSLocalizedString("cancelled", comment: "cancelled"))
                     
                     if !isCancelled {
                         downloadedButton.state = .startDownload
-                        toast(contentView: strongSelf.view, message: "DownloadError")
+                        toast(contentView: strongSelf.view, message: NSLocalizedString("DownloadError", comment: "DownloadError"))
                     }
                     break
                 case .success:
