@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8885F95CD5174DED76182C59 /* Pods_iData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3D9C004CA3259899D3F443A /* Pods_iData.framework */; };
 		DE01FDA02107490E00268546 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE01FDA22107490E00268546 /* Search.storyboard */; };
-		DE01FDA32107491800268546 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE01FDA52107491800268546 /* LaunchScreen.storyboard */; };
 		DE01FDB12107690000268546 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE01FDAF2107690000268546 /* InfoPlist.strings */; };
 		DE01FDB42107690000268546 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE01FDB22107690000268546 /* InfoPlist.strings */; };
 		DE01FDB72107690000268546 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DE01FDB52107690000268546 /* InfoPlist.strings */; };
@@ -33,6 +32,7 @@
 		DE9329B9210707C7005D41C9 /* AboutlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9329B8210707C7005D41C9 /* AboutlViewController.swift */; };
 		DE9B87B12107B01300B0BDAE /* Apple Chancery.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DE9B87B02107B01300B0BDAE /* Apple Chancery.ttf */; };
 		DEB15F9921047C740007558E /* DocDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB15F9821047C740007558E /* DocDetailViewController.swift */; };
+		DEF65A50210C1219007B30A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEF65A4E210C1219007B30A7 /* LaunchScreen.storyboard */; };
 		FDF2CDC047FC06CD1DC78699 /* Pods_iDataTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34353ACBDAA39B153D8F797F /* Pods_iDataTests.framework */; };
 		FF4521D4BBDC05ADD227757A /* Pods_iDataUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79B776D39CA23B952E86D96E /* Pods_iDataUITests.framework */; };
 /* End PBXBuildFile section */
@@ -64,8 +64,6 @@
 		9FF25BB37C2BD1186D7554EC /* Pods-iDataTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDataTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iDataTests/Pods-iDataTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A3D9C004CA3259899D3F443A /* Pods_iData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE01FDA12107490E00268546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Search.storyboard; sourceTree = "<group>"; };
-		DE01FDA42107491800268546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Search.storyboard; sourceTree = "<group>"; };
-		DE01FDAA2107496100268546 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		DE01FDAE2107497E00268546 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ../en.lproj/Main.strings; sourceTree = "<group>"; };
 		DE01FDB02107690000268546 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DE01FDB32107690000268546 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -76,7 +74,6 @@
 		DE01FDC321076A0500268546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DE01FDC521076A4F00268546 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		DE01FDC72107731300268546 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Search.strings; sourceTree = "<group>"; };
-		DE01FDC921077DC000268546 /* zh */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh; path = zh.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		DE4D43A120FE16CC006AC0C8 /* DocDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE4D43A320FE1718006AC0C8 /* DocDetailHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocDetailHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		DE8F713C20FDA5AD00D3C0D4 /* iData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iData.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +99,7 @@
 		DE9329B8210707C7005D41C9 /* AboutlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutlViewController.swift; sourceTree = "<group>"; };
 		DE9B87B02107B01300B0BDAE /* Apple Chancery.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple Chancery.ttf"; sourceTree = "<group>"; };
 		DEB15F9821047C740007558E /* DocDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocDetailViewController.swift; sourceTree = "<group>"; };
+		DEF65A4F210C1219007B30A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E67D27BACEC38F191FE55BA0 /* Pods-iDataUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iDataUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iDataUITests/Pods-iDataUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +204,7 @@
 		DE8F713E20FDA5AD00D3C0D4 /* iData */ = {
 			isa = PBXGroup;
 			children = (
+				DEF65A4E210C1219007B30A7 /* LaunchScreen.storyboard */,
 				DE20BA4521023DC500FC0508 /* Main */,
 				DE8F717D20FDBFF200D3C0D4 /* Search */,
 				DE8F714820FDA5AD00D3C0D4 /* Assets.xcassets */,
@@ -213,7 +212,6 @@
 				DE01FDB82107690000268546 /* Localizable.strings */,
 				DE01FDB22107690000268546 /* InfoPlist.strings */,
 				DE9B87B02107B01300B0BDAE /* Apple Chancery.ttf */,
-				DE01FDA52107491800268546 /* LaunchScreen.storyboard */,
 				DE8F713F20FDA5AD00D3C0D4 /* AppDelegate.swift */,
 			);
 			path = iData;
@@ -396,8 +394,8 @@
 				DE8F714920FDA5AD00D3C0D4 /* Assets.xcassets in Resources */,
 				DE01FDB42107690000268546 /* InfoPlist.strings in Resources */,
 				DE9B87B12107B01300B0BDAE /* Apple Chancery.ttf in Resources */,
-				DE01FDA32107491800268546 /* LaunchScreen.storyboard in Resources */,
 				DE01FDA02107490E00268546 /* Search.storyboard in Resources */,
+				DEF65A50210C1219007B30A7 /* LaunchScreen.storyboard in Resources */,
 				DE01FDBA2107690000268546 /* Localizable.strings in Resources */,
 				DE8F714720FDA5AD00D3C0D4 /* Main.storyboard in Resources */,
 			);
@@ -582,17 +580,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		DE01FDA52107491800268546 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DE01FDA42107491800268546 /* Base */,
-				DE01FDAA2107496100268546 /* en */,
-				DE01FDC921077DC000268546 /* zh */,
-			);
-			name = LaunchScreen.storyboard;
-			path = Base.lproj;
-			sourceTree = "<group>";
-		};
 		DE01FDAF2107690000268546 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -635,6 +622,14 @@
 				DE01FDBD2107690000268546 /* zh */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DEF65A4E210C1219007B30A7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DEF65A4F210C1219007B30A7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -768,7 +763,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UC3LEF3795;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = iData/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -789,7 +784,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UC3LEF3795;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = iData/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

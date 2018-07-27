@@ -69,6 +69,7 @@ extension AboutlViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HelpCell", for: indexPath)
         
         cell.textLabel?.text = helps[indexPath.section].helpValue
+        cell.accessoryType = (helps[indexPath.section].helpUrl != nil) ? UITableViewCellAccessoryType.detailButton : UITableViewCellAccessoryType.none
         
         return cell
     }
