@@ -12,3 +12,5 @@
 /* Bundle Display name */
 "CFBundleDisplayName" = "CFBundleDisplayName";
 
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "iData requires access to the photo library.";

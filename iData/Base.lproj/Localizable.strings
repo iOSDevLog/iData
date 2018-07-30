@@ -74,7 +74,7 @@
 "helpValue3" = "iOS Client of iData，developed by iOSDevLog, Tap to go to the App Store to view more detail.";
 
 /* helpValue4 */
-"helpValue4" = "There are no restrictions on the number of downloads available of iData for iOS . However, if a large volume of high-speed call system may have a certain frequency limit.\nThe download and preview addresses may be empty when obtaining the latest literature or infrequently used literature, because the system needs to synchronize the current requested literature, and the request will have a value once the synchronization is over, typically in seconds to 60 seconds.  \nIt will open the online URL if the download and preview addresses are empty. The download and preview are valid for 60 seconds and online URL are valid for 24 hours.";
+"helpValue4" = "There are no restrictions on the number of downloads available of iData for iOS. However, if a large volume of high-speed call system may have a certain frequency limit.\nThe download and preview addresses may be empty when obtaining the latest literature or infrequently used literature, because the system needs to synchronize the current requested literature, and the request will have a value once the synchronization is over, typically in seconds to 60 seconds.  \nIt will open the online URL if the download and preview addresses are empty. The download and preview are valid for 60 seconds and online URL are valid for 24 hours.";
 
 /* helpValue5 */
 "helpValue5" = "SCDB(综合),CJFQ(期刊),CDMD(博硕),CIPD(会议),CCND(报纸)。\nWhole library can be downloaded, as well as part of the Yearbook content (yearbook needs to download through cnki mirror), if you find that there is no downloadable literature, please email to idata@cn-ki.net feedback.";

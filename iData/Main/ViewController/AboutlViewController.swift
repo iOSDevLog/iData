@@ -11,7 +11,7 @@ import StoreKit
 import SafariServices
 
 class AboutlViewController: UIViewController {
-    let iTunesItemIdentifier = ""
+    let iTunesItemIdentifier = "1419721753"
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     @IBOutlet weak var versionLabel: UILabel!

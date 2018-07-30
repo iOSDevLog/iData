@@ -12,3 +12,6 @@
 /* Bundle Display name */
 "CFBundleDisplayName" = "知识搜索";
 
+/* Privacy - Photo Library Usage Description */
+"NSPhotoLibraryUsageDescription" = "知识搜索需要获取您的相册权限";
+
